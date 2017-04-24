@@ -6,7 +6,11 @@
 ## Description
 
 This Repo has my (David John Coleman II) integration of the tweepy library
-to auto generate tweets, retweets, and to follow users.
+to auto generate tweets, retweets, and to follow users on a cloudfoundry app
+with IBM Bluemix.
+
+## Documentation
+For integration with IBM Bluemix, cloudfoundry apps, see: [README.md](https://github.com/IBM-bluemix/get-started-python)
 
 ## References
 
