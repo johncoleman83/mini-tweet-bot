@@ -25,6 +25,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+credentials.py
 
 # python virtual environment/compiled files
 venv/
@@ -50,6 +51,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+*~
 
 # Translations
 *.mo
