@@ -1,6 +1,7 @@
-$def with (greeting)
+<h1>please input a tweet</h1>
 
-$if greeting:
-    I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.
-$else:
-    <em>Hello</em>, world!
+<form action="/" method="POST">
+    A tweet: <input type="text" name="tweet">
+    <br/>
+    <input type="submit">
+</form>
