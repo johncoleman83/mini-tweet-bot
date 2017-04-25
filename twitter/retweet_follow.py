@@ -10,8 +10,8 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-def retweet_follow:
-"""primary function that runs for loop"""
+def retweet_follow():
+    """primary function that runs for loop"""
 for tweet in tweepy.Cursor(api.search, q='#opensource').items():
     try:
         tweet.retweet()

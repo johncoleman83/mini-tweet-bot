@@ -15,7 +15,7 @@ file_lines = my_file.readlines()
 my_file.close()
 
 def tweet_text():
-""" runs for loop through all lines read in text file """
+    """ runs for loop through all lines read in text file """
     for line in file_lines:
         if line != '\n':
             api.update_status(line)
