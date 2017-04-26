@@ -1,7 +1,8 @@
 # twitter-bot
 
 * **language:** Python 2.7.10
-* **libraries:** tweepy, lpthw.web
+* **web framework:** web.py
+* **libraries:** tweepy.py, time
 
 ## Description
 
