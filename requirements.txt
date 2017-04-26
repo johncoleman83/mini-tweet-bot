@@ -2,4 +2,5 @@ Flask==0.11.1
 cf-deployment-tracker==1.0.2
 cloudant==2.4.0
 oauthlib==2.0.1
-tweepy==3.6.0
+tweepy==3.5.0
+lpthw.web==1.1
