@@ -1,12 +1,31 @@
 $def with (content)
-
-<html>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
     <title>twitter-bot</title>
-</head>
-<body>
-
-$:content
-
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:image" content="static/images/valar-morghulis.jpg"/>
+    <meta property="og:description" content="twitter bot: tweet, retweet, and follow"/>
+    <meta property="og:url" content="public-twitter.mybluemix.net"/>
+    <link rel="icon" href="static/images/hundled-around-tablet.jpg"/>
+    <link rel="icon" href="static/images/valar-morghulis.jpg"/>
+    <!--Styles-->
+    <link href="static/css/styles.css" rel="stylesheet"/>
+    <link href="static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav>
+	<ul>
+	  <li>
+	    <a></a>
+	  </li>
+	</ul>
+      </nav>
+    </header>
+    $:content
+    <footer>
+    </footer>
+  </body>
 </html>

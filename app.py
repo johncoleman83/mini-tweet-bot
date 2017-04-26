@@ -27,7 +27,7 @@ class index(object):
         return render.index()
 
     def POST(self):
-        form = web.input(tweet="tweet")
+        form = web.input()
         tweetvar = "%s" % (form.tweet)
         tweet_text(tweetvar)
         return render.confirmtweet(tweetvar = tweetvar)
