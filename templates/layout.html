@@ -17,15 +17,43 @@ $def with (content)
   <body>
     <header>
       <nav>
-	<ul>
-	  <li>
-	    <a></a>
-	  </li>
-	</ul>
+      <h3 class="header-title"><a href="/">twitter bot</a></h3>
+        <ul>
+          <li>
+            <a href="/">bot features</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/are_no_one" target="_blank">@are_no_one</a>
+          </li>
+          <li>
+            <a href="https://github.com/johncoleman83/twitter-bot" target="_blank">code on github</a>
+          </li>
+          <li>
+            <a href="http://www.davidjohncoleman.com/blog/" target="_blank">about this app</a>
+          </li>
+        </ul>
       </nav>
     </header>
-    $:content
+    <main>
+      $:content
+      <aside>
+	<a class="twitter-timeline" data-width="350" data-link-color="#2B7BB9"
+	   href="https://twitter.com/are_no_one">Tweets by are_no_one</a>
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </aside>
+    </main>
     <footer>
+      <p>by:
+	<a href="http://www.davidjohncoleman.com/" target="_blank">David John Coleman II</a>
+	<a href="https://twitter.com/djohncoleman" target="_blank">
+	  <i class="fa fa-twitter" aria-hidden="true"></i></a>
+	<a href="https://www.facebook.com/johncoleman83" target="_blank">
+	  <i class="fa fa-facebook" aria-hidden="true"></i></a>
+	<a href="https://github.com/johncoleman83/" target="_blank">
+	  <i class="fa fa-github" aria-hidden="true"></i></a>
+	<a href="https://www.linkedin.com/in/davidjohncoleman/" target="_blank">
+	  <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+      </p>
     </footer>
   </body>
 </html>

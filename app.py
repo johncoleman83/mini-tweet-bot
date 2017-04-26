@@ -5,6 +5,7 @@ takes user input and tweets to designated account
 import web
 import tweepy
 from credentials import *
+from time import sleep
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -21,6 +22,19 @@ def tweet_text(tweetvar):
     """ tweets text from input variable """
     if tweetvar != '\n':
         api.update_status(tweetvar)
+
+def retweet_follow():
+    """primary function that runs for loop"""
+    for tweet in tweepy.Cursor(api.search, q='#diversity').items():
+        try:
+            tweet.retweet()
+            if not tweet.user.following:
+                tweet.user.follow()
+                sleep(60)
+        except tweepy.TweepError as e:
+            print(e.reason)
+        except StopIteration:
+            break
 
 class index(object):
     def GET(self):

@@ -1,42 +1,210 @@
-
+/*! styles.css v1.0.1 */
 @charset "UTF-8";
+/* ================
+   HTML BODY FORMAT
+   ================ */
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+}
+
+html,
+body,
+article,
+aside,
+menu {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
 
 body {
-    display: block;
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Josefin Sans', serif;
+    color: rgba(0, 0, 0, 0.8);
 }
+
+
+/* ========================
+      HEADINGS and FONTS 
+   ======================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header {
+    font-family: Palatino,Palatino Linotype,Palatino LT STD,Book Antiqua,Georgia,serif
+}
+
+/* Text styles and margins */
+
+p {
+    margin-bottom: 15px;
+}
+h1 {
+    font-size: 36px;
+    margin: 40px 0 20px;
+}
+h2 {
+    font-size: 32px;
+    margin: 30px 0 15px;
+}
+h3 {
+    font-size: 28px;
+    margin: 25px 0 10px;
+}
+h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0 10px;
+}
+h6 {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+a {
+    color: #e80027;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #980019;
+}
+
+/* ================
+        HEADER
+   ================ */
 
 header {
-    background: #dadada;
-    padding: 20px;
+    position: relative;
+    background: #f3f3f3;
+    padding: .75%;
     box-shadow: 0px 0px 3px 2px #353535;
-    margin-bottom: 10px;
 }
 
-ul {
-    list-style: none;
+.header-title {
+    flex: 0 0 20%;
+    margin: 0 0;
+    padding: 3px 0;
 }
 
-main {
+nav {
+    margin: 0 15%;
     display: flex;
     flex-direction: row;
     flex: auto;
-    background: #fff;
 }
+
+ul {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    border: 1px groove #717171;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 1%;
+    margin: 0 2%;
+    display: block;
+    flex: auto;
+    list-style-type: none;
+    text-align: center;
+    box-shadow: 0px 0px 4px 0px #353535;
+}
+
+li:hover {
+    background: #e4e4e4;
+}
+
+li a {
+    font-size: 18px;
+}
+
+/* ================
+     MAIN CONTENT
+   ================ */
+
+main {
+    overflow: hidden;
+    backface-visibility: hidden;
+    will-change: overflow;
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    background-image: url(/static/images/selfie.jpg);
+    background-size: 78%;
+    background-repeat: no-repeat;
+}
+
+article::-webkit-scrollbar,
+aside::-webkit-scrollbar {
+    display: none;
+}
+
+article,
+aside {
+    overflow: auto;
+    height: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}
+
+aside {
+    background: #fff;
+    box-shadow: 0px 0px 3px 2px #353535;
+}
+
+article {
+    flex: 3;
+    text-align: center;
+}
+
+.confirmation p {
+    font-style: italic;
+    color: #0cff00;
+    text-shadow: 1px 1px 1px #353535;
+    font-size: 25px;
+    margin: .5% 10%;
+}
+
+/* ================
+     TWEET BUTTON 
+   ================ */
 
 #tweet-input {
     font-size: 20px;
 }
 
 .tweetbutton {
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
     background: #339dc3;
     padding: 7px 14px;
     font-weight: bold;
     font-size: 20px;
-    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
     color: #fff;
     text-decoration: none;
     border: 1px groove #339dc3;
@@ -46,14 +214,21 @@ main {
     background: #2683a5;
 }
 
-aside {
-    flex: 1;
-    overflow-y: auto;
-    background: transparent !important;
+/* ================
+        FOOTER 
+   ================ */
+
+footer {
+    box-shadow: 0px 0px 3px 2px #353535;
+    position: relative;
+    padding: 0 15%;
 }
 
-article {
-    flex: 2;
-    overflow-y: auto;
+footer p {
     text-align: center;
+    margin: .25%;
+}
+
+footer a {
+    padding: 0 1%;
 }

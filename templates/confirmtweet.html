@@ -1,13 +1,11 @@
 $def with (tweetvar)
-<main>
-  <article>
-
     $if tweetvar:
-        confirmation of your tweet: <em style="color: green; font-size: 2em;">$tweetvar</em>.
-    $else:
-        <em>unsuccessful</em>
+        <article class="confirmation">
+          <p>success! <i class="fa fa-smile-o" aria-hidden="true"></i></p>
+	  <p>$tweetvar</p>
 
-  </article>
-  <aside>
-    <a class="twitter-timeline" data-width="500" data-link-color="#2B7BB9" href="https://twitter.com/are_no_one">Tweets by are_no_one</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </aside>
+    $else:
+          <article>
+	    <p>unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i></p>
+
+</article>
