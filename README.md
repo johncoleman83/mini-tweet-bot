@@ -5,11 +5,14 @@
 
 ## Description
 
-This Repo has my (David John Coleman II) integration of the tweepy library
-to auto generate tweets, retweets, and to follow users.  There is a custom
-integration with twitter to allow anyone from the public to post tweets to
-the specified twitter account.  The app is designed to run on cloudfoundry
-apps with IBM Bluemix.
+This Repo has my (David John Coleman II) integration of the tweepy python
+library to auto generate tweets, retweets, and to follow users.  There is
+a custom integration with twitter to allow multiple users or anyone from
+the public to post tweets to one specified twitter account.  The current
+specified twitter account is listed here: https://twitter.com/are_no_one;
+however, any account can be substituted such as a tourist destination
+twitter account or company account.  The app is designed to run on
+cloudfoundry apps with IBM Bluemix.
 
 ## Documentation
 For integration with IBM Bluemix, cloudfoundry apps, see: [README.md](https://github.com/IBM-bluemix/get-started-python)
