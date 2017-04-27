@@ -1,19 +1,22 @@
 <article>
-  <br/>
-  <form id="featureform" action="/features" method="POST">
-    retweet and follow <input type="checkbox"
-			      name="retweet"
-			      value="retweet">
-    <br/><input type="text"
-		name="searchterms"
-		placeholder="search terms for retweet"
-		maxlength="25"
-		size="23"
-		id="search-input"><br/>
-    follow followers <input type="checkbox"
-			    name="followthem"
-			    value="followthem">
-    <br/>
-    <input type="submit" value="&#xf099 Automate" class="tweetbutton">
-  </form>
+  <div id="features-app">
+    <span style="color: #339dc3;">
+      <i class="fa fa-wrench" aria-hidden="true"></i> features:
+    </span>
+    <form id="featureform" action="/features" method="POST">
+      retweet and follow <input type="checkbox"
+				name="retweet"
+				value="retweet">
+      <br/><input type="text"
+		  name="searchterms"
+		  placeholder="search terms for retweet"
+		  maxlength="25"
+		  id="search-input"><br/>
+      follow followers <input type="checkbox"
+			      name="followthem"
+			      value="followthem">
+      <br/>
+      <input type="submit" value="&#xf099 Automate" class="tweetbutton">
+    </form>
+  </div>
 </article>

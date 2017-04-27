@@ -24,9 +24,12 @@ $def with (content)
   <body>
     <header>
       <nav>
-      <h3 class="header-title"><a href="/">twitter bot</a></h3>
         <ul>
-          <a href="/features"><li>
+	  <a href="/"><li>
+	      <i class="fa fa-home" aria-hidden="true"></i>
+	      twitter bot
+	  </li></a>
+	  <a href="/features"><li>
 	      <i class="fa fa-wrench" aria-hidden="true"></i>
 	      features
           </li></a>
@@ -47,7 +50,12 @@ $def with (content)
     <main>
       $:content
       <div id="features-outer">
-	<a id="features" href="#"><h3>features:</h3></a>
+	<a id="features" href="#">
+	  <span style="font-size: 30px">
+	    <i class="fa fa-info-circle" aria-hidden="true"></i>
+	  </span>
+	  <span style="font-size: 25px"></span>
+	</a>
 	<div id="features-box" class="empty">
 	  <p>
 	    <ul>
