@@ -3,39 +3,71 @@ $def with (content)
 <html lang="en">
   <head>
     <title>twitter-bot</title>
+
+    <!-- meta data -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:image" content="static/images/valar-morghulis.jpg"/>
     <meta property="og:description" content="twitter bot: tweet, retweet, and follow"/>
     <meta property="og:url" content="public-twitter.mybluemix.net"/>
-    <link rel="icon" href="static/images/hundled-around-tablet.jpg"/>
     <link rel="icon" href="static/images/valar-morghulis.jpg"/>
-    <!--Styles-->
+
+
+    <!-- styles -->
     <link href="static/css/styles.css" rel="stylesheet"/>
     <link href="static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- js -->
+    <script src="static/js/behavior.js"></script>
+
   </head>
   <body>
     <header>
       <nav>
       <h3 class="header-title"><a href="/">twitter bot</a></h3>
         <ul>
-          <li>
-            <a href="/">bot features</a>
-          </li>
-          <li>
-            <a href="https://twitter.com/are_no_one" target="_blank">@are_no_one</a>
-          </li>
-          <li>
-            <a href="https://github.com/johncoleman83/twitter-bot" target="_blank">code on github</a>
-          </li>
-          <li>
-            <a href="http://www.davidjohncoleman.com/blog/" target="_blank">about this app</a>
-          </li>
+          <a href="/features"><li>
+	      <i class="fa fa-wrench" aria-hidden="true"></i>
+	      features
+          </li></a>
+          <a href="https://twitter.com/are_no_one" target="_blank"><li>
+            @are_no_one
+          </li></a>
+          <a href="https://github.com/johncoleman83/twitter-bot" target="_blank"><li>
+              <i class="fa fa-code" aria-hidden="true"></i>
+	        source code
+          </li></a>
+          <a href="http://www.davidjohncoleman.com/blog/" target="_blank"><li>
+              <i class="fa fa-question" aria-hidden="true"></i>
+	        about
+          </li></a>
         </ul>
       </nav>
     </header>
     <main>
       $:content
+      <div id="features-outer">
+	<a id="features" href="#"><h3>features:</h3></a>
+	<div id="features-box" class="empty">
+	  <p>
+	    <ul>
+	      <li>shared twitter account for use within:
+		<br>(1) a club, organization, or company
+		<br>(2) at an event
+		<br>(3) photo spot at tourist destination
+	      </li>
+	      <li>create a global account for anyone in the public to access</li>
+	      <li>automate retweets & adding new followers
+		<br><a href="/features">click here to see this feature</a>
+	      </li>
+	      <li>follow your followers
+		<br><a href="/features">click here to see	this feature</a>
+	      </li>
+	      <li>learn more here: <a href="http://www.davidjohncoleman.com/blog/" target="_blank">about this app</a></li>
+	    </ul>
+	  </p>
+	</div>
+      </div>
       <aside>
 	<a class="twitter-timeline" data-width="350" data-link-color="#2B7BB9"
 	   href="https://twitter.com/are_no_one">Tweets by are_no_one</a>

@@ -1,4 +1,4 @@
-/*! styles.css v1.0.1 */
+/*! styles.css v1.0.3 */
 @charset "UTF-8";
 /* ================
    HTML BODY FORMAT
@@ -91,7 +91,7 @@ a:hover {
 
 header {
     position: relative;
-    background: #f3f3f3;
+    background: #fff;
     padding: .75%;
     box-shadow: 0px 0px 3px 2px #353535;
 }
@@ -109,7 +109,7 @@ nav {
     flex: auto;
 }
 
-ul {
+header ul {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
@@ -118,14 +118,14 @@ ul {
     padding: 0;
 }
 
-li {
-    background: #fff;
+header li {
+    background: #f3f3f3;
     border: 1px groove #717171;
     border-radius: 10px;
     -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    padding: 1%;
-    margin: 0 2%;
+    -webkit-border-radius: 19px;
+    padding: 3%;
+    margin: 0 17%;
     display: block;
     flex: auto;
     list-style-type: none;
@@ -133,11 +133,12 @@ li {
     box-shadow: 0px 0px 4px 0px #353535;
 }
 
-li:hover {
+header li:hover {
     background: #e4e4e4;
 }
 
-li a {
+header ul a {
+    flex: auto;
     font-size: 18px;
 }
 
@@ -166,11 +167,10 @@ article,
 aside {
     overflow: auto;
     height: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
 }
 
 aside {
+    flex: 1;
     background: #fff;
     box-shadow: 0px 0px 3px 2px #353535;
 }
@@ -183,6 +183,14 @@ article {
 .confirmation p {
     font-style: italic;
     color: #0cff00;
+    text-shadow: 1px 1px 1px #353535;
+    font-size: 25px;
+    margin: .5% 10%;
+}
+
+.failure p {
+    font-style: italic;
+    color: #980019;
     text-shadow: 1px 1px 1px #353535;
     font-size: 25px;
     margin: .5% 10%;
@@ -212,6 +220,54 @@ article {
 
 .tweetbutton:hover {
     background: #2683a5;
+    cursor: pointer;
+}
+
+/* ================
+       FEATURES 
+   ================ */
+.empty {
+    display: none !important;
+}
+
+#featureform {
+    margin: 0 5%;
+    font-size: 22px;
+    text-align: right;
+}
+
+#features-outer {
+    position: fixed;
+    top: 45%;
+    left: 5%;
+    max-width: 35%;
+}
+
+.features-box-data {
+    text-align: left;
+}
+
+.features-box-data ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1% 5%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px groove #717171;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 0px 0px 4px 0px #353535;
+}
+
+.features-box-data li {
+    padding: 1%;
+    margin: 0 2%;
+    font-size: 20px;
+}
+
+#search-input {
+    font-size: 20px;
 }
 
 /* ================

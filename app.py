@@ -13,7 +13,9 @@ api = tweepy.API(auth)
 
 urls = (
     '/', 'index',
-    '/confirmtweet', 'confirmtweet'
+    '/confirmtweet', 'confirmtweet',
+    '/features', 'features',
+    '/confirmfeature', 'confirmfeature'
 )
 app = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
@@ -23,14 +25,18 @@ def tweet_text(tweetvar):
     if tweetvar != '\n':
         api.update_status(tweetvar)
 
-def retweet_follow():
+def follow_followers():
+    for follower in tweepy.Cursor(api.followers).items():
+        follower.follow()
+
+def retweet_follow(searchterms):
     """primary function that runs for loop"""
-    for tweet in tweepy.Cursor(api.search, q='#diversity').items():
+    for tweet in tweepy.Cursor(api.search, q=searchterms).items():
         try:
             tweet.retweet()
             if not tweet.user.following:
                 tweet.user.follow()
-                sleep(60)
+                break
         except tweepy.TweepError as e:
             print(e.reason)
         except StopIteration:
@@ -42,14 +48,46 @@ class index(object):
 
     def POST(self):
         form = web.input()
-        tweetvar = "%s" % (form.tweet)
-        tweet_text(tweetvar)
-        return render.confirmtweet(tweetvar = tweetvar)
+        try:
+            tweetvar = "%s" % (form.tweet)
+            tweet_text(tweetvar)
+            return render.confirmtweet(tweetvar = tweetvar)
+        except:
+            return render.confirmtweet(tweetvar = "")
 
 class confirmtweet:
     def GET(self):
-        tweetvar = "no tweet"
-        return render.confirmtweet(tweetvar = tweetvar)
+        return render.confirmtweet(tweetvar = "")
+
+class features:
+    def GET(self):
+        return render.features()
+
+    def POST(self):
+        form = web.input()
+        try:
+            retweet = "%s" % (form.retweet)
+            if form.searchterms:
+                searchterms = "%s" % (form.searchterms)
+                retweet_follow(searchterms)
+            else:
+                retweet_follow("#diversity")
+        except:
+            try:
+                if form.followthem:
+                    follow_followers()
+            except:
+                return render.confirmfeature(status = "")
+        try:
+            if form.followthem:
+                follow_followers()
+                return render.confirmfeature(status = "success")
+        except:
+            return render.confirmfeature(status = "success")
+
+class confirmfeature:
+    def GET(self):
+        return render.confirmfeature(status = "")
 
 if __name__ == "__main__":
     app.run()
