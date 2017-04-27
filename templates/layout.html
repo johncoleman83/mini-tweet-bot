@@ -23,7 +23,10 @@ $def with (content)
   </head>
   <body>
     <header>
-      <nav>
+      <a id="hamburger" href="#">
+	<i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
+      <nav id="navigation" class="hidden">
         <ul>
 	  <a href="/"><li>
 	      <i class="fa fa-home" aria-hidden="true"></i>
@@ -51,29 +54,25 @@ $def with (content)
       $:content
       <div id="features-outer">
 	<a id="features" href="#">
-	  <span style="font-size: 30px">
-	    <i class="fa fa-info-circle" aria-hidden="true"></i>
-	  </span>
-	  <span style="font-size: 25px"></span>
+	  <i class="fa fa-info-circle" aria-hidden="true"></i>
 	</a>
 	<div id="features-box" class="empty">
-	  <p>
-	    <ul>
-	      <li>shared twitter account for use within:
-		<br>(1) a club, organization, or company
-		<br>(2) at an event
-		<br>(3) photo spot at tourist destination
-	      </li>
-	      <li>create a global account for anyone in the public to access</li>
-	      <li>automate retweets & adding new followers
-		<br><a href="/features">click here to see this feature</a>
-	      </li>
-	      <li>follow your followers
-		<br><a href="/features">click here to see	this feature</a>
-	      </li>
-	      <li>learn more here: <a href="http://www.davidjohncoleman.com/blog/" target="_blank">about this app</a></li>
-	    </ul>
-	  </p>
+	  <h4>twitter bot app features</h4>
+	  <ul>
+	    <li>shared twitter account for use within:
+	      <br>(1) a club, organization, or company
+	      <br>(2) at an event
+	      <br>(3) photo spot at tourist destination
+	    </li>
+	    <li>create a global account for anyone in the public to access</li>
+	    <li>automate retweets & adding new followers
+	      <br><a href="/features">click here to see this feature</a>
+	    </li>
+	    <li>follow your followers
+	      <br><a href="/features">click here to see	this feature</a>
+	    </li>
+	    <li>learn more here: <a href="http://www.davidjohncoleman.com/blog/" target="_blank">about this app</a></li>
+	  </ul>
 	</div>
       </div>
       <aside>
