@@ -3,5 +3,3 @@ applications:
  - name: public-twitter
    random-route: true
    memory: 128M
- - url: /static
-   static_dir: static/
