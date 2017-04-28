@@ -1,22 +1,40 @@
-# twitter-bot
+# mini tweet bot
 
-* **language:** Python 2.7.10
-* **web framework:** web.py
-* **libraries:** tweepy.py, time
+:a python application, for twitter automation with Cloud Foundry on IBM Bluemix
+
+### python
+
+  * __language:__ Python 2.7.10
+  * __libraries:__ tweepy, time
+  * __web framework:__ web.py
+
+### cloud:
+
+  * __platform:__ Cloud Foundry
+  * __infrastructure:__ IBM Bluemix
+
+### examples:
+
+  * __code on github:__ https://github.com/johncoleman83/twitter-bot
+  * __working app:__ https://public-twitter.mybluemix.net/
+  * __twitter account:__ https://public-twitter.mybluemix.net/
+  * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
 
 ## Description
 
-This Repo has my (David John Coleman II) integration of the tweepy python
-library to auto generate tweets, retweets, and to follow users.  There is
-a custom integration with twitter to allow multiple users or anyone from
-the public to post tweets to one specified twitter account.  The current
-specified twitter account is listed here: https://twitter.com/are_no_one;
-however, any account can be substituted such as a tourist destination
-twitter account or company account.  The app is designed to run on
-cloudfoundry apps with IBM Bluemix.
+This has my integrations of the tweepy python library to auto generate tweets,
+retweets, and to follow users.  There is a custom integration with twitter to
+allow multiple users or anyone from the public to post tweets to one specified
+twitter account.  The current specified twitter account is specified above;
+however, any account can be substituted such as a tourist destination twitter
+account or company account.  The app is designed to run on cloudfoundry
+applications with IBM Bluemix.
 
 ## Documentation
-For integration with IBM Bluemix, cloudfoundry apps, see: [README.md](https://github.com/IBM-bluemix/get-started-python)
+
+For integration with IBM Bluemix, cloudfoundry apps, see the 
+[README.md](https://github.com/IBM-bluemix/get-started-python) 
+from the below referenced repository.  Or read the blog post referenced above.
 
 ## References
 
