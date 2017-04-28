@@ -15,7 +15,7 @@
 
 ### examples:
 
-  * __code on github:__ https://github.com/johncoleman83/twitter-bot
+  * __code on github:__ https://github.com/johncoleman83/mini-tweet-bot
   * __working app:__ https://public-twitter.mybluemix.net/
   * __twitter account:__ https://public-twitter.mybluemix.net/
   * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
