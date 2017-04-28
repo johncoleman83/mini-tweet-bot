@@ -1,12 +1,12 @@
 $def with (tweetvar)
-    $if tweetvar:
-        <article class="confirmation">
-          <p>success! <i class="fa fa-smile-o" aria-hidden="true"></i></p>
-	  <p>$tweetvar</p>
+	$if tweetvar:
+		<article class="confirmation">
+			<p>success! <i class="fa fa-smile-o" aria-hidden="true"></i></p>
+			<p>$tweetvar</p>
 
-    $else:
-          <article class="failure">
-	    <p>unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i></p>
-	    <p>no tweet</p>
+	$else:
+		<article class="failure">
+			<p>unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i></p>
+			<p>no tweet</p>
 
 </article>
