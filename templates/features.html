@@ -23,10 +23,18 @@
 		  <input type="checkbox"
 				 name="autotweet"
 				 > auto tweet file<br/>
-		  <input type="file" name="inputfile" accept=".txt"/>
+		  <input type="file" name="inputfile" accept=".txt"><br>
+		  <span style="font-size:15px">
+			interval in seconds</span><br />
+		  <input type="number"
+				 name="seconds"
+				 min="10800"
+				 max="600000"
+				 title="min: 3 hours to max: 7 days in seconds"><br>
 		  <input type="submit" value="&#xf099 Automate" class="tweetbutton">
 		</form>
 		*participation requires compliance of
-		<a href="https://support.twitter.com/articles/18311" target="_blank">"The Twitter Rules"</a>
+		<a href="https://support.twitter.com/articles/18311"
+		   target="_blank">"The Twitter Rules"</a>
 	</div>
 </article>

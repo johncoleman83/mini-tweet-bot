@@ -1,4 +1,4 @@
-consumer_key = 'aConsumerKey-123'
-consumer_secret = 'aConsumerSecret-123'
-access_token = 'anAccessToken-123'
-access_token_secret = 'anAccessTokenSecret-123'
+consumer_key = '[YOURCOMSUMERKEY]' #(example: '5FmNevRxQriq1')
+consumer_secret = '[YOURCOMSUMERSECRET]' #(example: 'pMKxr4ocPV451')
+access_token = '[YOURACCESSTOKEN]' #(example: 'ZuPzOYwz2n6o')
+access_token_secret = '[YOURACCESSTOKENSECRET]' #(example: 'TCqaOPc8j1qP')

@@ -22,10 +22,9 @@ render = web.template.render('templates/', base="layout")
 
 def tweet_text(tweetvar):
     """ tweets text from input variable """
-    if tweetvar != '\n':
-        api.update_status(tweetvar)
+    api.update_status(tweetvar)
 
-def auto_tweet(filename):
+def auto_tweet(filename, seconds):
     """ runs for loop through all lines read in text file """
     fout = open(filename, 'r')
     file_lines = fout.readlines()
@@ -38,7 +37,7 @@ def auto_tweet(filename):
                 pass
         except:
             pass
-        sleep(120)
+        sleep(seconds)
 
 def follow_followers():
     """ follow all your followers """
@@ -123,7 +122,11 @@ class features:
                     fout = open(filename, 'w')
                     fout.write(form.inputfile.file.read())
                     fout.close()
-                    auto_tweet(filename)
+                    try:
+                        seconds = form.seconds
+                        auto_tweet(filename, seconds)
+                    except:
+                        auto_tweet(filename, 10800)
         except:
             pass
         return render.confirmfeature(status = "success")
