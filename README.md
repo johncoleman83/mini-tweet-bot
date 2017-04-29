@@ -17,8 +17,13 @@
 
   * __code on github:__ https://github.com/johncoleman83/mini-tweet-bot
   * __working app:__ https://public-twitter.mybluemix.net/
-  * __twitter account:__ https://public-twitter.mybluemix.net/
   * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
+
+### twitter:
+
+  * __twitter app:__ https://dev.twitter.com/
+  * __tweet deck:__ https://tweetdeck.twitter.com/
+  * __twitter (bot) account:__ https://twitter.com/are_no_one
 
 ## Description
 

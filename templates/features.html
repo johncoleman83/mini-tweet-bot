@@ -6,15 +6,24 @@
 		<form id="featureform" action="/features" method="POST">
 		  <input type="checkbox"
 				 name="retweet"
-				 value="retweet">retweet & follow<br/>
+				 > retweet & follow<br/>
+		  <input type="checkbox"
+				 name="followten"
+				 > follow 10<br/>
+		  <span style="font-size:15px">
+			search terms for retweet and follow 10</span><br />
 		  <input type="text"
 				 name="searchterms"
-				 placeholder="search terms for retweet"
+				 placeholder="maxlength = 25 chars"
 				 maxlength="25"
 				 id="search-input"><br/>
 		  <input type="checkbox"
 				 name="followthem"
-				 value="followthem">follow followers<br/>
+				 > follow followers<br/>
+		  <input type="checkbox"
+				 name="autotweet"
+				 > auto tweet file<br/>
+		  <input type="file" name="inputfile" accept=".txt"/>
 		  <input type="submit" value="&#xf099 Automate" class="tweetbutton">
 		</form>
 		*participation requires compliance of

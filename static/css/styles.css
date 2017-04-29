@@ -1,4 +1,4 @@
-/*! styles.css v1.0.5 */
+/*! styles.css v1.0.8 */
 @charset "UTF-8";
 
 /* ================
@@ -15,24 +15,29 @@ html,
 body,
 article,
 aside,
+main,
 menu {
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	font-family: 'Josefin Sans', serif;
 	color: rgba(0, 0, 0, 0.8);
 }
 
+input {
+    margin: 5px 0;
+}
+
 /* ========================
-     HEADINGS and FONTS 
+     HEADINGS and FONTS
    ======================== */
 
 h1, h2, h3, h4, h5, h6, p, a, header, html {
@@ -146,9 +151,6 @@ header ul a {
    ================ */
 
 main {
-	overflow: hidden;
-	backface-visibility: hidden;
-	will-change: overflow;
 	display: flex;
 	flex-direction: row;
 	flex-flow: row wrap;
@@ -159,17 +161,11 @@ main {
 	background-repeat: no-repeat;
 }
 
-article::-webkit-scrollbar,
-aside::-webkit-scrollbar {
-	display: none;
-}
-
 article,
 aside {
 	min-width: 310px;
-	overflow: auto;
-	height: auto;
-	min-height: 300px;
+	overflow: scroll;
+	height: 100%;
 }
 
 aside {
@@ -179,6 +175,7 @@ aside {
 }
 
 article {
+	min-height: 350px;
 	flex: 3;
 	text-align: center;
 }
@@ -295,7 +292,7 @@ article {
 	background-color: white;
 	cursor: auto;
 	width: 95%;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 #features-app {
@@ -421,9 +418,9 @@ footer a {
 	}
 
 	main {
-		overflow: auto;
-		background-size: 140%;
-		background-position-x: -100px;
+		overflow: scroll;
+		background-size: 225%;
+		background-position-x: -200px;
 	}
 
 }

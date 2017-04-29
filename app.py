@@ -5,7 +5,8 @@ takes user input and tweets to designated account
 import web
 import tweepy
 from credentials import *
-from time import sleep
+from threading import Thread
+import time
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -25,9 +26,33 @@ def tweet_text(tweetvar):
     if tweetvar != '\n':
         api.update_status(tweetvar)
 
+def auto_tweet():
+    """ runs for loop through all lines read in text file """
+    my_file = open('test.txt', 'r')
+    file_lines = my_file.readlines()
+    my_file.close()
+    for line in file_lines:
+        if line != '\n':
+            api.update_status(line)
+            sleep(30)
+        else:
+            pass
+
 def follow_followers():
+    """ follow all your followers """
     for follower in tweepy.Cursor(api.followers).items():
         follower.follow()
+
+def follow_ten(searchterms):
+    """follow ten new followers based on given searchterms"""
+    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
+        try:
+            if not tweet.user.following:
+                tweet.user.follow()
+        except tweepy.TweepError as e:
+            print(e.reason)
+        except StopIteration:
+            break
 
 def retweet_follow(searchterms):
     """primary function that runs for loop"""
@@ -73,17 +98,27 @@ class features:
             else:
                 retweet_follow("#diversity")
         except:
-            try:
-                if form.followthem:
-                    follow_followers()
-            except:
-                return render.confirmfeature(status = "")
+            pass
         try:
             if form.followthem:
                 follow_followers()
-                return render.confirmfeature(status = "success")
         except:
-            return render.confirmfeature(status = "success")
+            pass
+        try:
+            if form.followten:
+                if form.searchterms:
+                    searchterms = "%s" % (form.searchterms)
+                    follow_ten(searchterms)
+                else:
+                    follow_ten("#opensource")
+        except:
+            pass
+        try:
+            if form.autotweet:
+                auto_tweet()
+        except:
+            pass
+        return render.confirmfeature(status = "success")
 
 class confirmfeature:
     def GET(self):
