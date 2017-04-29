@@ -5,7 +5,6 @@ takes user input and tweets to designated account
 import web
 import tweepy
 from credentials import *
-from threading import Thread
 import time
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
