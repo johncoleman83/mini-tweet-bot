@@ -17,8 +17,8 @@
 
   * __code on github:__ <a href="https://github.com/johncoleman83/mini-tweet-bot" target="_blank">https://github.com/johncoleman83/mini-tweet-bot</a>
   * __working app:__ <a href="https://mtb.mybluemix.net/" target="_blank">https://mtb.mybluemix.net/</a>
-  * __blog:__ [http://www.davidjohncoleman.com/2017/mini-tweet-bot/](http://www.davidjohncoleman.com/2017/mini-tweet-bot/){:target="_blank"}
-
+  * __blog:__ [http://www.davidjohncoleman.com/2017/mini-tweet-bot/](http://www.davidjohncoleman.com/2017/mini-tweet-bot/)
+  
 ### twitter:
 
   * __twitter app:__ https://dev.twitter.com/
