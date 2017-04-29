@@ -5,7 +5,8 @@ takes user input and tweets to designated account
 import web
 import tweepy
 from credentials import *
-import time
+from time import sleep
+import threading
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -25,17 +26,20 @@ def tweet_text(tweetvar):
     if tweetvar != '\n':
         api.update_status(tweetvar)
 
-def auto_tweet():
+def auto_tweet(filename):
     """ runs for loop through all lines read in text file """
-    my_file = open('test.txt', 'r')
-    file_lines = my_file.readlines()
-    my_file.close()
+    fout = open(filename, 'r')
+    file_lines = fout.readlines()
+    fout.close()
     for line in file_lines:
-        if line != '\n':
-            api.update_status(line)
-            sleep(30)
-        else:
+        try:
+            if line != '\n':
+                api.update_status(line)
+            else:
+                pass
+        except:
             pass
+        sleep(120)
 
 def follow_followers():
     """ follow all your followers """
@@ -88,7 +92,7 @@ class features:
         return render.features()
 
     def POST(self):
-        form = web.input()
+        form = web.input(inputfile={})
         try:
             retweet = "%s" % (form.retweet)
             if form.searchterms:
@@ -114,7 +118,13 @@ class features:
             pass
         try:
             if form.autotweet:
-                auto_tweet()
+                if 'inputfile' in form:
+                    filepath=form.inputfile.filename.replace('\\','/')
+                    filename=filepath.split('/')[-1]
+                    fout = open(filename, 'w')
+                    fout.write(form.inputfile.file.read())
+                    fout.close()
+                    auto_tweet(filename)
         except:
             pass
         return render.confirmfeature(status = "success")
