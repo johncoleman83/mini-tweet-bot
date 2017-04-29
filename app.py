@@ -6,7 +6,6 @@ import web
 import tweepy
 from credentials import *
 from time import sleep
-import threading
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)

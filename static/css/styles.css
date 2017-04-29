@@ -1,9 +1,19 @@
-/*! styles.css v1.0.9 */
+/*! styles.css v1.1.4 */
 @charset "UTF-8";
 
 /* ================
    HTML BODY FORMAT
    ================ */
+
+article,
+aside,
+details,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
 
 html,
 body {
@@ -17,8 +27,6 @@ article,
 aside,
 main,
 menu {
-	overflow: scroll;
-	-webkit-overflow-scrolling: touch;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -161,21 +169,18 @@ main {
 	background-repeat: no-repeat;
 }
 
-article,
 aside {
 	min-width: 310px;
-	overflow: scroll;
-	height: 100%;
-}
-
-aside {
+	overflow-y: auto;
 	flex: 1;
 	background: #fff;
-	box-shadow: 0px 0px 3px 2px #353535;
+	box-shadow: 0px -6px 3px 2px #353535;
 }
 
 article {
-	min-height: 350px;
+	min-width: 310px;
+	overflow-y: auto;
+	min-height: 400px;
 	flex: 3;
 	text-align: center;
 }
@@ -253,10 +258,8 @@ article {
 }
 
 #featureform {
-	margin: 0 5%;
 	font-size: 22px;
 	text-align: left;
-	min-width: 250px;
 }
 
 #features-outer {
@@ -417,10 +420,23 @@ footer a {
 		font-size: 30px;
 	}
 
+	html,
+	body,
+	aside,
+	article {
+		-webkit-overflow-scrolling: touch;
+		overflow: scroll;
+		height: 100%;
+	}
+
 	main {
 		overflow: scroll;
 		background-size: 225%;
 		background-position-x: -200px;
+	}
+
+	aside {
+		box-shadow: 0px 0px 3px 2px #353535;
 	}
 
 }
