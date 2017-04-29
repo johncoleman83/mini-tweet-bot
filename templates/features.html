@@ -11,12 +11,13 @@
 				 name="followten"
 				 > follow 10<br/>
 		  <span style="font-size:15px">
-			search terms for retweet and follow 10</span><br />
+			search terms (default #diversity)</span><br />
 		  <input type="text"
 				 name="searchterms"
-				 placeholder="maxlength = 25 chars"
+				 id="search-input"
+				 placeholder="used with retweet and follow 10"
 				 maxlength="25"
-				 id="search-input"><br/>
+				 ><br/>
 		  <input type="checkbox"
 				 name="followthem"
 				 > follow followers<br/>
@@ -25,7 +26,7 @@
 				 > auto tweet file<br/>
 		  <input type="file" name="inputfile" accept=".txt"><br>
 		  <span style="font-size:15px">
-			interval in seconds</span><br />
+			interval: N seconds (default: 1 day)</span><br />
 		  <input type="number"
 				 name="seconds"
 				 min="10800"

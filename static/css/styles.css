@@ -1,4 +1,4 @@
-/*! styles.css v1.1.4 */
+/*! styles.css v1.1.5 */
 @charset "UTF-8";
 
 /* ================
@@ -294,7 +294,7 @@ article {
 	box-shadow: inset 0px 0px 4px 0px #353535;
 	background-color: white;
 	cursor: auto;
-	width: 95%;
+	width: 75%;
 	font-size: 15px;
 }
 
