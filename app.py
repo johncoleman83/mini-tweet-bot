@@ -6,6 +6,7 @@ import web
 import tweepy
 from credentials import *
 from time import sleep
+from threading import Thread
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -124,9 +125,11 @@ class features:
                     fout.close()
                     try:
                         seconds = form.seconds
-                        auto_tweet(filename, seconds)
+                        t = Thread(target=auto_tweet, args=(filename, seconds))
+                        t.start()
                     except:
-                        auto_tweet(filename, 10800)
+                        t = Thread(target=auto_tweet, args=(filename, 10800))
+                        t.start()
         except:
             pass
         return render.confirmfeature(status = "success")
