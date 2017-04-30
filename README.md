@@ -15,13 +15,13 @@
 
 ### examples:
 
-  * __code on github:__ <a href="https://github.com/johncoleman83/mini-tweet-bot" target="_blank">https://github.com/johncoleman83/mini-tweet-bot</a>
-  * __working app:__ <a href="https://mtb.mybluemix.net/" target="_blank">https://mtb.mybluemix.net/</a>
+  * __code on github:__ [https://github.com/johncoleman83/mini-tweet-bot](https://github.com/johncoleman83/mini-tweet-bot)
+  * __working app:__ [https://mtb.mybluemix.net/"](https://mtb.mybluemix.net/)
   * __blog:__ [http://www.davidjohncoleman.com/2017/mini-tweet-bot/](http://www.davidjohncoleman.com/2017/mini-tweet-bot/)
-  
+
 ### twitter:
 
-  * __twitter app:__ https://dev.twitter.com/
+  * __twitter dev tools:__ https://dev.twitter.com/
   * __tweet deck:__ https://tweetdeck.twitter.com/
   * __twitter (bot) account:__ https://twitter.com/are_no_one
 
