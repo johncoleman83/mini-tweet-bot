@@ -41,6 +41,10 @@ For integration with IBM Bluemix, cloudfoundry apps, see the
 [README.md](https://github.com/IBM-bluemix/get-started-python) 
 from the below referenced repository.  Or read the blog post referenced above.
 
+## Usage
+
+`$ python app.py`
+
 ## References
 
 * **forked from:** https://github.com/IBM-bluemix/get-started-python
