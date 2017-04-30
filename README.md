@@ -5,7 +5,7 @@
 ### python
 
   * __language:__ Python 2.7.10
-  * __libraries:__ tweepy, time
+  * __libraries:__ tweepy, time, multiprocessing
   * __web framework:__ web.py
 
 ### cloud:
