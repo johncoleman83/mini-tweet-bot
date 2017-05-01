@@ -55,10 +55,6 @@ from the below referenced repository.  Or read the blog post referenced above.
 
 David John Coleman II.	Check out my website [davidjohncoleman.com](http://www.davidjohncoleman.com/)
 
-## Vulnerabilities
-
-Contact author for more information on vulnerabilities.
-
 ## License
 
 Public Domain, no copyright protection

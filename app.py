@@ -23,9 +23,14 @@ render = web.template.render('templates/', base="layout")
 
 def tweet_text(tweetvar):
     """ tweets text from input variable """
-    api.update_status(tweetvar)
+    try:
+        api.update_status(tweetvar)
+    except tweepy.TweepError as e:
+        print(e.reason)
+    except:
+        pass
 
-def auto_tweet(filename, seconds):
+def auto_tweet_file(filename, seconds):
     """ runs for loop through all lines read in text file """
     fout = open(filename, 'r')
     file_lines = fout.readlines()
@@ -40,25 +45,47 @@ def auto_tweet(filename, seconds):
             pass
         sleep(seconds)
 
+def auto_retweet(searchterms, seconds):
+    """ runs for loop through all lines read in text file """
+    for x in range(25):
+        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
+            try:
+                tweet.retweet()
+                if not tweet.user.following:
+                    tweet.user.follow()
+                break
+            except tweepy.TweepError as e:
+                print(e.reason)
+            except:
+                break
+        sleep(seconds)
+
 def follow_followers():
     """ follow all your followers """
     for follower in tweepy.Cursor(api.followers).items():
-        follower.follow()
+        try:
+            follower.follow()
+        except tweepy.TweepError as e:
+            print(e.reason)
+        except:
+            pass
 
 def follow_ten(searchterms):
     """follow ten new followers based on given searchterms"""
-    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
-        try:
-            if not tweet.user.following:
-                tweet.user.follow()
-        except tweepy.TweepError as e:
-            print(e.reason)
-        except StopIteration:
-            break
+    for x in range(10):
+        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
+            try:
+                if not tweet.user.following:
+                    tweet.user.follow()
+                    break
+            except tweepy.TweepError as e:
+                print(e.reason)
+            except:
+                break
 
 def retweet_follow(searchterms):
-    """primary function that runs for loop"""
-    for tweet in tweepy.Cursor(api.search, q=searchterms).items():
+    """searches tweets with searchterms, retweets, then follows"""
+    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
         try:
             tweet.retweet()
             if not tweet.user.following:
@@ -66,7 +93,7 @@ def retweet_follow(searchterms):
                 break
         except tweepy.TweepError as e:
             print(e.reason)
-        except StopIteration:
+        except:
             break
 
 class index(object):
@@ -92,19 +119,22 @@ class features:
 
     def POST(self):
         form = web.input(inputfile={})
+        failcount = 0
         try:
-            retweet = "%s" % (form.retweet)
-            if form.searchterms:
-                searchterms = "%s" % (form.searchterms)
-                retweet_follow(searchterms)
-            else:
-                retweet_follow("#diversity")
+            if form.retweet:
+                if form.searchterms:
+                    searchterms = "%s" % (form.searchterms)
+                    retweet_follow(searchterms)
+                else:
+                    retweet_follow("#diversity")
         except:
+            failcount += 1;
             pass
         try:
             if form.followthem:
                 follow_followers()
         except:
+            failcount += 1;
             pass
         try:
             if form.followten:
@@ -114,6 +144,7 @@ class features:
                 else:
                     follow_ten("#opensource")
         except:
+            failcount += 1;
             pass
         try:
             if form.autotweet:
@@ -125,16 +156,36 @@ class features:
                     fout.close()
                     try:
                         seconds = form.seconds
-                        p = multiprocessing.Process(target=auto_tweet,
+                        p = multiprocessing.Process(target=auto_tweet_file,
                                                     args=(filename, float(seconds)))
                         p.start()
                     except:
-                        p = multiprocessing.Process(target=auto_tweet,
+                        p = multiprocessing.Process(target=auto_tweet_file,
                                                     args=(filename, float(86400)))
                         p.start()
         except:
+            failcount += 1;
             pass
-        return render.confirmfeature(status = "success")
+        try:
+            if form.autoretweet:
+                if form.seconds:
+                    seconds = form.seconds
+                else:
+                    seconds = 86400
+                if form.searchterms:
+                    searchterms = "%s" % (form.searchterms)
+                else:
+                    searchterms = "#opensource #GNU"
+                p = multiprocessing.Process(target=auto_retweet,
+                                            args=(searchterms, float(seconds)))
+                p.start()
+        except:
+            failcount += 1;
+            pass
+        if failcount == 5:
+            return render.confirmfeature(status = "")
+        else:
+            return render.confirmfeature(status = "success")
 
 class confirmfeature:
     def GET(self):

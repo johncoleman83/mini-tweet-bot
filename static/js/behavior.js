@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 document.addEventListener("DOMContentLoaded", function(event) {
 	var featuresTwo = document.getElementById("features-two");
+	var featuresBox = document.getElementById("features-box");
 	featuresTwo.addEventListener("click", function() {
 		if (featuresBox.className == "empty") {
 			featuresBox.className = "features-box-data";
