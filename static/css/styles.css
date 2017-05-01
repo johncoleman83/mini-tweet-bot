@@ -1,4 +1,4 @@
-/*! styles.css v1.1.7 */
+/*! styles.css v1.1.8 */
 @charset "UTF-8";
 
 /* ================
@@ -103,7 +103,7 @@ a:hover {
 
 #menu-logo {
 	position: fixed;
-	top: 5px;
+	top: 2px;
 	left: 5px;
 	width: 48px;
 	height: 48px;
@@ -145,11 +145,12 @@ header li {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 19px;
 	padding: 3% 5%;
-	margin: 0 13%;
+	margin: 0 6%;
 	display: block;
 	flex: auto;
 	list-style-type: none;
 	text-align: center;
+	max-width: 150px;
 	box-shadow: 0px 0px 4px 0px #353535;
 }
 
@@ -272,7 +273,7 @@ article {
 
 #features-outer {
 	position: fixed;
-	top: 15%;
+	top: 65px;
 	left: 1%;
 	max-width: 35%;
 }
@@ -292,7 +293,7 @@ article {
 .features-box-data li {
 	padding: 1%;
 	margin: 0 2%;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 #search-input {
@@ -377,6 +378,7 @@ footer a {
 	}
 
 	header li {
+		max-width: 100%;
 		margin: 0 3%;
 	}
 
@@ -418,6 +420,7 @@ footer a {
 	}
 
 	#features-outer {
+	    	top: 5px;
 		position: relative;
 		max-width: 90%;
 		margin-top: 5px;
