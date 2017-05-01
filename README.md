@@ -26,11 +26,8 @@
   * __twitter dev tools:__ https://dev.twitter.com/
   * __tweet deck:__ https://tweetdeck.twitter.com/
   * __twitter (bot) account:__ https://twitter.com/are_no_one
-
-  #### twitter bot rules:
-
-    * __api limits:__ https://support.twitter.com/articles/160385
-	* __best practices:__ https://dev.twitter.com/basics
+  * __api limits:__ https://support.twitter.com/articles/160385
+  * __best practices:__ https://dev.twitter.com/basics
 
 ## Description
 
