@@ -1,4 +1,4 @@
-/*! styles.css v1.1.8 */
+/*! styles.css v1.1.9 */
 @charset "UTF-8";
 
 /* ================
@@ -275,7 +275,7 @@ article {
 	position: fixed;
 	top: 65px;
 	left: 1%;
-	max-width: 35%;
+	max-width: 40%;
 }
 
 .features-box-data {
@@ -391,7 +391,7 @@ footer a {
 	}
 
 	#features-outer {
-		max-width: 60%;
+		max-width: 70%;
 	}
 
 	#feature-form {
