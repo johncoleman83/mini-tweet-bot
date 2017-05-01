@@ -1,4 +1,4 @@
-/*! styles.css v1.1.6 */
+/*! styles.css v1.1.7 */
 @charset "UTF-8";
 
 /* ================
@@ -99,6 +99,14 @@ a:hover {
 
 #hamburger {
 	display: none;
+}
+
+#menu-logo {
+	position: fixed;
+	top: 5px;
+	left: 5px;
+	width: 48px;
+	height: 48px;
 }
 
 header {
@@ -264,7 +272,7 @@ article {
 
 #features-outer {
 	position: fixed;
-	top: 12%;
+	top: 15%;
 	left: 1%;
 	max-width: 35%;
 }
@@ -354,6 +362,11 @@ footer a {
 
 @media (max-width: 900px) {
 
+	#menu-logo {
+		width: 32px;
+		height: 32px;
+	}
+
 	main {
 		background-size: 140%;
 		background-position-x: -300px;
@@ -372,7 +385,7 @@ footer a {
 	}
 
 	#features-app {
-		max-width: 80%;
+		max-width: 74%;
 	}
 
 	#features-outer {
@@ -390,16 +403,24 @@ footer a {
 
 	#search-input {
 		width: 80%;
-		font-size: 16px;
+		font-size: 12px;
 	}
 }
 
 
 @media (max-width: 600px) {
 
+	#menu-logo {
+		width: 43px;
+		height: 43px;
+		left: 56px;
+		top: 2px;
+	}
+
 	#features-outer {
 		position: relative;
 		max-width: 90%;
+		margin-top: 5px;
 	}
 
 	#hamburger {
