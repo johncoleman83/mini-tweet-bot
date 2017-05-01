@@ -17,15 +17,20 @@
 
 ### examples:
 
-  * __code on github:__ [https://github.com/johncoleman83/mini-tweet-bot](https://github.com/johncoleman83/mini-tweet-bot)
-  * __working app:__ [https://mtb.mybluemix.net/"](https://mtb.mybluemix.net/)
-  * __blog:__ [http://www.davidjohncoleman.com/2017/mini-tweet-bot/](http://www.davidjohncoleman.com/2017/mini-tweet-bot/)
+  * __code on github:__ https://github.com/johncoleman83/mini-tweet-bot
+  * __working app:__ https://mtb.mybluemix.net/
+  * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
 
 ### twitter:
 
   * __twitter dev tools:__ https://dev.twitter.com/
   * __tweet deck:__ https://tweetdeck.twitter.com/
   * __twitter (bot) account:__ https://twitter.com/are_no_one
+
+  #### twitter bot rules:
+
+    * __api limits:__ https://support.twitter.com/articles/160385
+	* __best practices:__ https://dev.twitter.com/basics
 
 ## Description
 
