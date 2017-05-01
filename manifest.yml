@@ -1,5 +1,5 @@
 ---
 applications:
- - name: public-twitter
+ - name: mtb
    random-route: true
    memory: 128M

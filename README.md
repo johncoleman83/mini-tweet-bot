@@ -10,8 +10,10 @@
 
 ### cloud:
 
-  * __platform:__ Cloud Foundry
-  * __infrastructure:__ IBM Bluemix
+  * __infrastructure:__ IBM Bluemix, https://www.ibm.com/cloud-computing/bluemix/
+  * __platform:__ Cloud Foundry, https://www.cloudfoundry.org/
+  * __Cloud Foundry command line interface (CLI):__ https://github.com/cloudfoundry/cli
+  * __CF python template app:__ https://github.com/IBM-Bluemix/get-started-python
 
 ### examples:
 

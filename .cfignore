@@ -6,3 +6,4 @@ credentials-djc.py
 *~
 test.txt
 *.DS_Store
+*.pyc
