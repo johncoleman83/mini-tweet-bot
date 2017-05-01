@@ -1,4 +1,4 @@
-# mini tweet bot
+# <img src="https://github.com/johncoleman83/mini-tweet-bot/static/images/anonymousface.png" width="128" height="128" /> mini tweet bot
 
 :a python application, for twitter automation with Cloud Foundry on IBM Bluemix
 
