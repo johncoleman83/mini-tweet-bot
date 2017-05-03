@@ -6,37 +6,41 @@
 		<form method="POST" id="featureform" enctype="multipart/form-data">
 		  <input type="checkbox"
 				 name="retweet"
-				 > retweet & follow<br/>
+				 > retweet & follow<br>
 		  <input type="checkbox"
 				 name="followten"
-				 > follow 10<br/>
+				 > follow 10<br>
   		  <input type="checkbox"
 				 name="autoretweet"
-				 > auto retweet<br/>
-		  <span style="font-size:15px">
-			search terms (default #diversity)</span><br />
+				 > auto retweet<br>
+		  <strong>Search Terms:</strong><br>
 		  <input type="text"
 				 name="searchterms"
 				 id="search-input"
 				 placeholder="for retweet, follow 10, & auto retweet"
 				 maxlength="25"
 				 title="maximum: 140 characters"
-				 ><br/>
+				 ><br>
+		  <span style="font-size:15px">
+			(default: '#diversity')</span><br>
 		  <input type="checkbox"
 				 name="followthem"
-				 > follow followers<br/>
+				 > follow followers<br>
 		  <input type="checkbox"
 				 name="autotweet"
-				 > auto tweet file<br/>
+				 > auto tweet file<br>
+		  <a style="font-size: 12px;"
+			 href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/daffodils.txt"
+			 target="_blank">click here for example file</a><br/>
 		  <input type="file" name="inputfile" accept=".txt"><br>
-		  <span style="font-size:15px">
-			interval: N seconds (default: 1 day)</span><br />
+		  <strong>interval:</strong> N seconds<br />
 		  <input type="number"
 				 name="seconds"
 				 min="10800"
 				 max="600000"
 				 step="60"
 				 title="min: 3 hours to max: 7 days in seconds"><br>
+		  <span style="font-size:15px">(default: 86400 seconds; i.e. 1 day)</span><br />
 		  <input type="submit" value="&#xf099 Automate" class="tweetbutton">
 		</form>
 		*participation requires compliance of

@@ -259,7 +259,7 @@ article {
    ================ */
 
 #flash {
-	color: rgba(19, 200, 222, .4);
+	color: rgba(0, 0, 0, .6);
 	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
 	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
 	animation-name: flashing;
