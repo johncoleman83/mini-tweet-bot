@@ -1,4 +1,4 @@
-/*! styles.css v1.1.9 */
+/*! styles.css v2.0.0 */
 @charset "UTF-8";
 
 /* ================
@@ -258,6 +258,37 @@ article {
        FEATURES
    ================ */
 
+#flash {
+	color: rgba(19, 200, 222, .4);
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+	animation-name: flashing;
+	animation-duration: 1s;
+	animation-iteration-count: 5;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes flashing {
+
+	from {
+		color: #0ec5e6;
+	}
+	to {
+		color: #f3ef13;
+	}
+}
+
+/* Standard syntax */
+@keyframes flashing {
+
+	from {
+		color: #0ec5e6;
+	}
+	to {
+		color: #f3ef13;
+	}
+}
+
 #features {
 	font-size: 40px;
 }
@@ -273,9 +304,9 @@ article {
 
 #features-outer {
 	position: fixed;
-	top: 65px;
+	top: 95px;
 	left: 1%;
-	max-width: 40%;
+	max-width: 60%;
 }
 
 .features-box-data {
@@ -291,9 +322,13 @@ article {
 }
 
 .features-box-data li {
-	padding: 1%;
+	padding: .3%;
 	margin: 0 2%;
-	font-size: 18px;
+	font-size: 16px;
+}
+
+.features-box-data ul {
+	padding: 0 10px;
 }
 
 #search-input {
