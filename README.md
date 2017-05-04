@@ -61,10 +61,6 @@ from the below referenced repository.  Or read the blog post referenced above.
 
   Module with functions for censoring input text.
 
-* `./daffodils.txt`
-
-  Example directory to show how to input text to automate texting from a file.
-
 * `./manifest.yml`
 
   Supports cloud foundry command line interface.
@@ -94,6 +90,10 @@ from the below referenced repository.  Or read the blog post referenced above.
 
   This directory contains old files from Cloud Foundry template, that I did not
   use, and some other support files explained below.
+
+* `./support/daffodils.txt`
+
+  Example file to show how to input text to automate texting from a file.
 
 * `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
