@@ -4,9 +4,12 @@ takes user input and tweets to designated account
 """
 import web
 import tweepy
-from credentials import *
-from time import sleep
 import multiprocessing
+from time import sleep
+from credentials import *
+import censorship
+remove_whitespace = censorship.remove_whitespace
+censor = censorship.censor
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -26,53 +29,23 @@ def tweet_text(tweetvar):
     """ tweets text from input variable """
     try:
         api.update_status(tweetvar)
-    except tweepy.TweepError as e:
-        print(e.reason)
     except:
-        pass
+        return False
+    return True
 
 
-def auto_tweet_file(filename, seconds):
-    """ runs for loop through all lines read in text file """
-    fout = open(filename, 'r')
-    file_lines = fout.readlines()
-    fout.close()
-    for line in file_lines:
+def retweet_follow(searchterms):
+    """searches tweets with searchterms, retweets, then follows"""
+    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
         try:
-            if line != '\n':
-                api.update_status(line)
-            else:
-                pass
-        except:
-            pass
-        sleep(seconds)
-
-
-def auto_retweet(searchterms, seconds):
-    """ runs for loop through all lines read in text file """
-    for x in range(25):
-        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
-            try:
-                tweet.retweet()
-                if not tweet.user.following:
-                    tweet.user.follow()
-                break
-            except tweepy.TweepError as e:
-                print(e.reason)
-            except:
-                break
-        sleep(seconds)
-
-
-def follow_followers():
-    """ follow all your followers """
-    for follower in tweepy.Cursor(api.followers).items():
-        try:
-            follower.follow()
+            tweet.retweet()
+            if not tweet.user.following:
+                tweet.user.follow()
+            return True
         except tweepy.TweepError as e:
             print(e.reason)
-        except:
             pass
+    return False
 
 
 def follow_ten(searchterms):
@@ -85,22 +58,49 @@ def follow_ten(searchterms):
                     break
             except tweepy.TweepError as e:
                 print(e.reason)
-            except:
+                pass
+
+
+def auto_retweet(searchterms, seconds):
+    """ searches for tweets, attempts to retweet, follows, and repeat """
+    for x in range(25):
+        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
+            try:
+                tweet.retweet()
+                if not tweet.user.following:
+                    tweet.user.follow()
                 break
+            except tweepy.TweepError as e:
+                print(e.reason)
+                pass
+        sleep(seconds)
 
 
-def retweet_follow(searchterms):
-    """searches tweets with searchterms, retweets, then follows"""
-    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
+def auto_tweet_file(filename, seconds):
+    """ runs loop through all lines in text file and tweets them """
+    fout = open(filename, 'r')
+    file_lines = fout.readlines()
+    fout.close()
+    for line in file_lines:
         try:
-            tweet.retweet()
-            if not tweet.user.following:
-                tweet.user.follow()
-                break
+            if line != '\n' and censor(line):
+                api.update_status(line)
+            else:
+                pass
         except tweepy.TweepError as e:
             print(e.reason)
-        except:
-            break
+            pass
+        sleep(seconds)
+
+
+def follow_followers():
+    """ follow all your followers """
+    for follower in tweepy.Cursor(api.followers).items():
+        try:
+            follower.follow()
+        except tweepy.TweepError as e:
+                print(e.reason)
+                pass
 
 
 class index(object):
@@ -111,10 +111,14 @@ class index(object):
         form = web.input()
         try:
             tweetvar = "%s" % (form.tweet)
-            tweet_text(tweetvar)
-            return render.confirmtweet(tweetvar=tweetvar)
+            if censor(tweetvar):
+                if tweet_text(tweetvar):
+                    return render.confirmtweet(tweetvar=tweetvar)
+            else:
+                return render.confirmtweet(tweetvar="profanity")
         except:
-            return render.confirmtweet(tweetvar="")
+            return render.confirmtweet(tweetvar="failure")
+        return render.confirmtweet(tweetvar="failure")
 
 
 class confirmtweet:
@@ -133,9 +137,11 @@ class features:
             if form.retweet:
                 if form.searchterms:
                     searchterms = "%s" % (form.searchterms)
-                    retweet_follow(searchterms)
+                    if retweet_follow(searchterms) == False:
+                        failcount += 1
                 else:
-                    retweet_follow("#diversity")
+                    if retweet_follow("#diversity") == False:
+                        failcount += 1
         except:
             failcount += 1
             pass
@@ -194,7 +200,7 @@ class features:
             failcount += 1
             pass
         if failcount == 5:
-            return render.confirmfeature(status="")
+            return render.confirmfeature(status="failure")
         else:
             return render.confirmfeature(status="success")
 

@@ -45,18 +45,78 @@ For integration with IBM Bluemix, cloudfoundry apps, see the
 [README.md](https://github.com/IBM-bluemix/get-started-python) 
 from the below referenced repository.  Or read the blog post referenced above.
 
+## File List
+
+* `./Procfile`
+
+  this file contains the initiation script for run the app in IBM Bluemix CF
+
+* `./app.py`
+
+  The main application, used to render web user interface and call all functions
+  of all the features.
+
+* `./censorship.py`
+
+  Module with functions for censoring input text.
+
+* `./daffodils.txt`
+
+  Example directory to show how to input text to automate texting from a file.
+
+* `./manifest.yml`
+
+  Supports cloud foundry command line interface.
+
+* `./mycredentials.py`
+
+  Example of how to use twitter API to integrate with tweepy.  If you attempt
+  to make your own twitter bot, you should rename this file `credentials.py` so
+  that it is imported into `app.py` with the line: `from credentials import *`
+
+* `./profanity.txt`
+
+  dictionary of profaine words; contains 700+ words
+
+* `./requirements.txt`
+
+  contains information on the modules necessary to run this app
+
+* `./static/`
+
+  This directory contains all  website support files such as `.css`, `.js`, and
+  fontasesome.io integrations
+
+* `./support/`
+
+  This directory contains old files from Cloud Foundry template, that I did not
+  use.
+
+* `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
+
+  These are example files that contain only one function for the event that
+  someone wants to make a twitter bot without integration into the cloud.
+
+* `./templates/`
+
+  This contains all the HTML content as rendered with python
+
 ## Usage
 
 `$ python app.py`
 
-## References
+### References
 
 * **forked from:** https://github.com/IBM-bluemix/get-started-python
 
-## Author
+### Style
+
+* PEP 8: https://www.python.org/dev/peps/pep-0008/
+
+### Author
 
 David John Coleman II.	Check out my website [davidjohncoleman.com](http://www.davidjohncoleman.com/)
 
-## License
+### License
 
 Public Domain, no copyright protection

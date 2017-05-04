@@ -14,6 +14,7 @@ my_file = open('tweet.txt', 'r')
 file_lines = my_file.readlines()
 my_file.close()
 
+
 def tweet_text():
     """ runs for loop through all lines read in text file """
     for line in file_lines:
@@ -22,5 +23,6 @@ def tweet_text():
             sleep(86400)
         else:
             pass
+
 
 tweet_text()
