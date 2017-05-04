@@ -122,7 +122,7 @@ from the below referenced repository.  Or read the blog post referenced above.
    * change the link of the twitter handle in the nav HTML tag to link instead
    	 to your linked twitter account.
    * change the icon/ logos to your preference
-   * find the cloud to host the app.  minit tweet bot is already setup with
+   * find the cloud to host the app.  Mini tweet bot is already setup with
    	 Cloud Foundry for IBM Bluemix, but other cloud services will work as well.
 
 __NOTE:__ The mini tweet bot functions most successfully when hosted on a
