@@ -114,16 +114,16 @@ from the below referenced repository.  Or read the blog post referenced above.
 
    * fork or clone the github repository.
    * get your own twitter app from twitter dev tools linked above.
-   * change the mycredentials.py file name to credentials.py
+   * change the `mycredentials.py` file name to `credentials.py`
    * change the strings from the credentials file to contain your personal
    	 twitter information.
    * change the twitter feed link in the <aside> HTML tag to instead link to
-   	 your witter feed.
+   	 your twitter feed.
    * change the link of the twitter handle in the nav HTML tag to link instead
    	 to your linked twitter account.
-   * change the icon/ logos to be how you prefer
-   * find the cloud to host the app.  It's all setup with Cloud Foundry for IBM
-   	 Bluemix, but other cloud services will work as well.
+   * change the icon/ logos to your preference
+   * find the cloud to host the app.  minit tweet bot is already setup with
+   	 Cloud Foundry for IBM Bluemix, but other cloud services will work as well.
 
 __NOTE:__ The mini tweet bot functions most successfully when hosted on a
 cloud.  However, if you would like to run the app on your own machine, you can
