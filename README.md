@@ -7,6 +7,7 @@
   * __language:__ Python 2.7.10
   * __libraries:__ tweepy, time, multiprocessing
   * __web framework:__ web.py
+  * __style__: PEP 8: https://www.python.org/dev/peps/pep-0008/
 
 ### cloud:
 
@@ -104,14 +105,6 @@ from the below referenced repository.  Or read the blog post referenced above.
 ## Usage
 
 `$ python app.py`
-
-### References
-
-* **forked from:** https://github.com/IBM-bluemix/get-started-python
-
-### Style
-
-* PEP 8: https://www.python.org/dev/peps/pep-0008/
 
 ### Author
 
