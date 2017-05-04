@@ -92,7 +92,8 @@ from the below referenced repository.  Or read the blog post referenced above.
 
 * `./support/daffodils.txt`
 
-  Example file to show how to input text to automate texting from a file.
+  Example file to show how to input text to automate texting from a file.  Each
+  line from the file is tweeted every N seconds.
 
 * `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
