@@ -75,9 +75,11 @@ from the below referenced repository.  Or read the blog post referenced above.
   to make your own twitter bot, you should rename this file `credentials.py` so
   that it is imported into `app.py` with the line: `from credentials import *`
 
-* `./profanity.txt`
+* `./profanity.py`, `./suppprt/profanity.txt`
 
-  dictionary of profaine words; contains 700+ words
+  dictionary of profaine words; contains 700+ words.  the `.py` file contains a
+  a set and is imported into the `censorship.py` module, the `.txt` file is used
+  simply for testing and to more easily share the dictionary.
 
 * `./requirements.txt`
 
@@ -91,7 +93,7 @@ from the below referenced repository.  Or read the blog post referenced above.
 * `./support/`
 
   This directory contains old files from Cloud Foundry template, that I did not
-  use.
+  use, and some other support files explained below.
 
 * `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
@@ -100,7 +102,9 @@ from the below referenced repository.  Or read the blog post referenced above.
 
 * `./templates/`
 
-  This contains all the HTML content as rendered with python
+  This contains all the HTML content as rendered with python.  I used one file
+  as a base layout which contains the same head, header, sidebar, and footer.
+  The main content in the article section changes per GET and POST call.
 
 ## Usage
 

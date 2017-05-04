@@ -79,13 +79,14 @@ $def with (content)
 		<li><strong>retweet & follow: </strong>
 		  (1) bot searches linked account with <strong>search terms</strong>
 		  from user input; (2) attempts a retweet; (3) attempts to follow the
-		  user of the retweeted tweet; (4) This process is repeated until a new
-		  follower is followed or there are 10 retweets;
+		  user of the retweeted tweet; (4) This process is repeated until a
+		  tweet is successfully tweeted, or the list of tweets if fully parsed;
 		</li>
 		<li><strong>follow 10: </strong>
 		  (1) bot searches linked account with <strong>search terms</strong>
 		  from user input; (2) attempts to follow 10 new followers from the
-		  users in the search results;
+		  users in the search results; (3) if there are no results, or all the
+		  users are already being followed, then no new user is followed.
 		</li>
 		<li><strong>auto retweet: </strong>
 		  (1) bot searches linked account with <strong>search terms</strong>
@@ -102,10 +103,9 @@ $def with (content)
 		  <br>(5) <a href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/daffodils.txt"
 			 target="_blank">click here for example file</a>
 		<li><strong>NOTE:</strong> if your tweets are not going through, it may
-		  be a result of twitter API restrictions.  Twitter will not allow you
-		  to repeat tweets.  Additionally, your query from your search terms may
-		  return nothing, and thus not automate your request. To read more about
-		  twitter API, check out the blog, linked below.
+		  be a result of twitter API restrictions or your query from your search
+		  terms may return no results, and thus not automate your request. To
+		  read more about twitter API, check out the blog, linked below.
 		</li>
 		<li><a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/"
 			   target="_blank">mini tweet bot blog:</a> read more details about

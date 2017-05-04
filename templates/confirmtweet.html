@@ -7,9 +7,11 @@ $def with (tweetvar)
 	$elif tweetvar == "failure":
 		<article class="failure">
 			<p>unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i></p>
-			<p>twitter API did not tweet.<br>
+			<p>your tweet failed possibly to these reasons:<br>
 			  is this a repeated tweet?<br>
-			  did you reach your max tweets?</p>
+			  did you reach your max tweets?<br>
+			  are you following twitter's API rules?
+			</p>
 
 	$else:
 		<article class="confirmation">

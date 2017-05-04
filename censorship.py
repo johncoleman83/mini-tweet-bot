@@ -1,5 +1,7 @@
-# censorship module
-
+"""
+censorship module
+runs test on input string to see if it contains profanity
+"""
 from profanity import profanity
 
 

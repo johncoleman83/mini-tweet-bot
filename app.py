@@ -1,5 +1,5 @@
 """
-app module
+app python mini tweet bot application
 takes user input and tweets to designated account
 """
 import web
@@ -50,16 +50,18 @@ def retweet_follow(searchterms):
 
 def follow_ten(searchterms):
     """follow ten new followers based on given searchterms"""
+    retval = False
     for x in range(10):
         for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
             try:
                 if not tweet.user.following:
                     tweet.user.follow()
+                    retval = True
                     break
             except tweepy.TweepError as e:
                 print(e.reason)
                 pass
-
+    return retval
 
 def auto_retweet(searchterms, seconds):
     """ searches for tweets, attempts to retweet, follows, and repeat """
@@ -137,10 +139,10 @@ class features:
             if form.retweet:
                 if form.searchterms:
                     searchterms = "%s" % (form.searchterms)
-                    if not retweet_follow(searchterms):
+                    if retweet_follow(searchterms) is False:
                         failcount += 1
                 else:
-                    if not retweet_follow("#diversity"):
+                    if retweet_follow("#diversity") is False:
                         failcount += 1
         except:
             failcount += 1
@@ -155,9 +157,11 @@ class features:
             if form.followten:
                 if form.searchterms:
                     searchterms = "%s" % (form.searchterms)
-                    follow_ten(searchterms)
+                    if follow_ten(searchterms) is False:
+                        failcount += 1
                 else:
-                    follow_ten("#opensource")
+                    if follow_ten("#opensource") is False:
+                        failcount += 1
         except:
             failcount += 1
             pass
