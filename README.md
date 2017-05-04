@@ -30,7 +30,7 @@
   * __api limits:__ https://support.twitter.com/articles/160385
   * __best practices:__ https://dev.twitter.com/basics
 
-## Description
+## description
 
 This has my integrations of the tweepy python library to auto generate tweets,
 retweets, and to follow users.  There is a custom integration with twitter to
@@ -40,13 +40,13 @@ however, any account can be substituted such as a tourist destination twitter
 account or company account.  The app is designed to run on cloudfoundry
 applications with IBM Bluemix.
 
-## Documentation
+## documentation
 
 For integration with IBM Bluemix, cloudfoundry apps, see the 
 [README.md](https://github.com/IBM-bluemix/get-started-python) 
 from the below referenced repository.  Or read the blog post referenced above.
 
-## File List
+## file List
 
 * `./Procfile`
 
@@ -106,9 +106,52 @@ from the below referenced repository.  Or read the blog post referenced above.
   as a base layout which contains the same head, header, sidebar, and footer.
   The main content in the article section changes per GET and POST call.
 
-## Usage
+## usage
 
 `$ python app.py`
+
+## build your own bot
+
+   * fork or clone the github repository.
+   * get your own twitter app from twitter dev tools linked above.
+   * change the mycredentials.py file name to credentials.py
+   * change the strings from the credentials file to contain your personal
+   	 twitter information.
+   * change the twitter feed link in the <aside> HTML tag to instead link to
+   	 your witter feed.
+   * change the link of the twitter handle in the nav HTML tag to link instead
+   	 to your linked twitter account.
+   * change the icon/ logos to be how you prefer
+   * find the cloud to host the app.  It's all setup with Cloud Foundry for IBM
+   	 Bluemix, but other cloud services will work as well.
+
+__NOTE:__ The mini tweet bot functions most successfully when hosted on a
+cloud.  However, if you would like to run the app on your own machine, you can
+run it, and it will be loaded on a local host port IP address such as:
+http://0.0.0.0:8080/.  If you do not want the user interface, you should then
+use only the tweet functions, and run them on an as needed basis.  Here is an
+example of how to run a single function from the `singletweet.py` file:
+
+```
+$ cat singletweet.py
+import tweepy
+from credentials import *
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
+
+def tweet_text(tweetvar):
+    """ tweets text from input variable """
+    try:
+        api.update_status(tweetvar)
+    except:
+        print("error")
+        pass
+
+tweet_text("this tweet is an example of running a tweet function in python")
+$ python singletweet.py
+```
 
 ### Author
 
