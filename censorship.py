@@ -1,5 +1,8 @@
 # censorship module
 
+from profanity import profanity
+
+
 def remove_whitespace(string, sub):
     whitespace = [':', ';', '.', ',',
                   '-', '=', '*', '\t',
@@ -11,15 +14,12 @@ def remove_whitespace(string, sub):
 
 
 def is_clean(inputlist):
-    fout = open("profanity.txt", 'r')
-    profanity = fout.readlines()
-    fout.close()
-    for j in range(0, len(inputlist)):
-        for line in profanity:
-            if inputlist[j] == line[:-1]:
+    for word in range(0, len(inputlist)):
+        for curse in profanity:
+            if inputlist[word] == curse:
                 return False
-            temp = remove_whitespace(inputlist[j], "")
-            if temp == line[:-1]:
+            temp = remove_whitespace(inputlist[word], "")
+            if temp == curse:
                 return False
     return True
 
