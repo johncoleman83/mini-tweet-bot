@@ -10,19 +10,22 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-my_file = open('tweet.txt', 'r')
-file_lines = my_file.readlines()
-my_file.close()
 
-
-def tweet_text():
-    """ runs for loop through all lines read in text file """
+def auto_tweet_file(filename, seconds):
+    """ runs loop through all lines in text file and tweets them """
+    fout = open(filename, 'r')
+    file_lines = fout.readlines()
+    fout.close()
     for line in file_lines:
-        if line != '\n':
-            api.update_status(line)
-            sleep(86400)
-        else:
+        try:
+            if line != '\n' and censor(line):
+                api.update_status(line)
+            else:
+                pass
+        except tweepy.TweepError as e:
+            print(e.reason)
             pass
+        sleep(seconds)
 
 
-tweet_text()
+auto_tweet_file()
