@@ -137,10 +137,10 @@ class features:
             if form.retweet:
                 if form.searchterms:
                     searchterms = "%s" % (form.searchterms)
-                    if retweet_follow(searchterms) == False:
+                    if not retweet_follow(searchterms):
                         failcount += 1
                 else:
-                    if retweet_follow("#diversity") == False:
+                    if not retweet_follow("#diversity"):
                         failcount += 1
         except:
             failcount += 1
