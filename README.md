@@ -49,12 +49,12 @@ from the below referenced repository.  Or read the blog post referenced above.
 
 ## file List
 
-   ### cloud foundry
+ ### cloud foundry
 
-   	   * `./Procfile`: this file contains the initiation script for run the app
-	   	 in IBM Bluemix CF
-	   * `./manifest.yml`: Supports cloud foundry command line interface.
-	   * `./runtime.txt`: informs cloudfoundry of what version of python to run
+ * `./Procfile`: this file contains the initiation script for run the app
+ in IBM Bluemix CF
+ * `./manifest.yml`: Supports cloud foundry command line interface.
+ * `./runtime.txt`: informs cloudfoundry of what version of python to run
 
 * `./app.py`
 
@@ -91,15 +91,15 @@ from the below referenced repository.  Or read the blog post referenced above.
   This directory contains old files from Cloud Foundry template, that I did not
   use, and some other support files explained below.
 
-    * `./support/daffodils.txt`
+  * `./support/daffodils.txt`
 
-	  Example file to show how to input text to automate texting from a file.
-	  Each line from the file is tweeted every N seconds.
+  Example file to show how to input text to automate texting from a file.
+  Each line from the file is tweeted every N seconds.
 
-	* `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
+  * `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
-	  These are example files that contain only one function for the event that
-	  someone wants to make a twitter bot without integration into the cloud.
+  These are example files that contain only one function for the event that
+  someone wants to make a twitter bot without integration into the cloud.
 
 * `./templates/`
 
