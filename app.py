@@ -149,7 +149,6 @@ class features:
         seconds = float(form.seconds if form.seconds else 86400)
         iterations = int(form.iterations if form.iterations else 3)
         xfollowers = int((form.xfollowers) if form.xfollowers else 3)
-        rferror = ""
         try:
             if form.retweet:
                 if retweet_follow(searchterms) is not True:
@@ -194,7 +193,7 @@ class features:
             failcount += 1
             pass
         if failcount == 5:
-            return render.confirmfeature(status="failure", error=rferror)
+            return render.confirmfeature(status="failure")
         else:
             return render.confirmfeature(status="success")
 
