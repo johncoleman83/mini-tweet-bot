@@ -5,6 +5,9 @@
 ### python
 
   * __language:__ Python 2.7.10
+
+  	* python3: `$ pip3 install git+https://github.com/webpy/webpy#egg=web.py`
+
   * __libraries:__ tweepy, time, multiprocessing
   * __web framework:__ web.py
   * __style__: PEP 8: https://www.python.org/dev/peps/pep-0008/

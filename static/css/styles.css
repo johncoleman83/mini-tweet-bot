@@ -1,4 +1,4 @@
-/*! styles.css v2.0.1 */
+/*! styles.css v2.0.2 */
 @charset "UTF-8";
 
 /* ================
@@ -204,7 +204,7 @@ article {
 
 .failure p {
 	font-style: italic;
-	color: #980019;
+	color: #ff0730;
 	text-shadow: 1px 1px 1px #353535;
 	font-size: 25px;
 	margin: .5% 10%;

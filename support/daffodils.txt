@@ -10,3 +10,6 @@ I gazed—and gazed—but little thought what wealth the show to me had brought:
 For oft, when on my couch I lie In vacant or in pensive mood,
 They flash upon that inward eye Which is the bliss of solitude;
 And then my heart with pleasure fills, And dances with the daffodils.
+
+
+# each line in the file will be tweeted, 1 line at a time, every N seconds until even this last line is tweeted
