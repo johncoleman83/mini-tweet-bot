@@ -5,6 +5,7 @@ runs test on input string to see if it contains profanity
 from profanity import profanity
 from aldict import ascii_leet
 
+
 def remove_whitespace(string, sub):
     whitespace = [':', ';', '.', ',',
                   '-', '=', '*', '\t',
