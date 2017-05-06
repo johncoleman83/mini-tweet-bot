@@ -5,12 +5,11 @@
 ### python
 
   * __language:__ Python 2.7.10
-
-  	* python3: `$ pip3 install git+https://github.com/webpy/webpy#egg=web.py`
-
   * __libraries:__ tweepy, time, multiprocessing
   * __web framework:__ web.py
   * __style__: PEP 8: https://www.python.org/dev/peps/pep-0008/
+
+  	* Note: for python3 `$ pip3 install git+https://github.com/webpy/webpy#egg=web.py`
 
 ### cloud:
 
@@ -50,9 +49,12 @@ from the below referenced repository.  Or read the blog post referenced above.
 
 ## file List
 
-* `./Procfile`
+   ### cloud foundry
 
-  this file contains the initiation script for run the app in IBM Bluemix CF
+   	   * `./Procfile`: this file contains the initiation script for run the app
+	   	 in IBM Bluemix CF
+	   * `./manifest.yml`: Supports cloud foundry command line interface.
+	   * `./runtime.txt`: informs cloudfoundry of what version of python to run
 
 * `./app.py`
 
@@ -62,10 +64,6 @@ from the below referenced repository.  Or read the blog post referenced above.
 * `./censorship.py`
 
   Module with functions for censoring input text.
-
-* `./manifest.yml`
-
-  Supports cloud foundry command line interface.
 
 * `./mycredentials.py`
 
@@ -88,20 +86,20 @@ from the below referenced repository.  Or read the blog post referenced above.
   This directory contains all  website support files such as `.css`, `.js`, and
   fontasesome.io integrations
 
-* `./support/`
+### `./support/`
 
   This directory contains old files from Cloud Foundry template, that I did not
   use, and some other support files explained below.
 
-* `./support/daffodils.txt`
+    * `./support/daffodils.txt`
 
-  Example file to show how to input text to automate texting from a file.  Each
-  line from the file is tweeted every N seconds.
+	  Example file to show how to input text to automate texting from a file.
+	  Each line from the file is tweeted every N seconds.
 
-* `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
+	* `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
-  These are example files that contain only one function for the event that
-  someone wants to make a twitter bot without integration into the cloud.
+	  These are example files that contain only one function for the event that
+	  someone wants to make a twitter bot without integration into the cloud.
 
 * `./templates/`
 
