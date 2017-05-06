@@ -7,10 +7,13 @@ import tweepy
 import multiprocessing
 from time import sleep
 from credentials import *
+
+# censoring functions
 import censorship
+
+# dictionaries
 from aldict import ascii_dict
 from aldict import leet_dict
-
 
 # import functions
 remove_whitespace = censorship.remove_whitespace

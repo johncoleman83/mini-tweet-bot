@@ -73,11 +73,13 @@ in IBM Bluemix CF
   to make your own twitter bot, you should rename this file `credentials.py` so
   that it is imported into `app.py` with the line: `from credentials import *`
 
-* `./profanity.py`, `./suppprt/profanity.txt`
+* `./profanity.py`, `./suppprt/profanity.txt`, `aldict.py`
 
-  dictionary of profaine words; contains 700+ words.  the `.py` file contains a
-  a set and is imported into the `censorship.py` module, the `.txt` file is used
-  simply for testing and to more easily share the dictionary.
+  `profanity.py`: set of profaine words; contains 700+ words.  the `.py`
+  file contains a set and is imported into the `censorship.py` module, the
+  `.txt` file is used simply for testing and to more easily share the
+  list.  `aldict.py` contains the ascii-art and L337 translation
+  dictionaries
 
 * `./requirements.txt`
 
