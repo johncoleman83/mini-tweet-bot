@@ -5,4 +5,4 @@ python:
 
 install: "pip install -r requirements.txt"
 
-script: pwd && ls -la
+script: cd /home/travis/build/johncoleman83/mini-tweet-bot && python app.py
