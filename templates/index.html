@@ -1,16 +1,30 @@
-<article>
-	<br/>
-	<form action="/" method="POST">
-	  <input type="text"
-			 name="tweet"
-			 id="tweet-input"
-			 placeholder="type custom tweet here"
-			 pattern=".{5,140}" required
-			 title="min: 5 to max: 140 characters"
-			 >
-	<p id="rules">*participation requires compliance with:<br>
-		<a href="https://support.twitter.com/articles/18311" target="_blank">"The Twitter Rules"</a>.
-	</p>
-	<input type="submit" value="&#xf099 Tweet" class="tweetbutton">
-	</form>
-</article>
+$def with (newstring)
+	<article>
+		<br/>
+		<form action="/" method="POST">
+		  <input type="text"
+				 name="tweet"
+				 id="tweet-input"
+				 placeholder="type custom tweet here"
+				 pattern=".{5,140}" required
+				 title="min: 5 to max: 140 characters"
+				 ><br>
+		  <select name="translate">
+			<option value="none">none</option>
+			<option value="ascii">ascii art</option>
+			<option value="leet">L337</option>
+		  </select>
+		  <input type="submit" value="translate" class="translatebutton"><br>
+		  <p id="rules">*participation requires compliance with:<br>
+			<a href="https://support.twitter.com/articles/18311"
+			   target="_blank">
+			  "The Twitter Rules"
+			</a>.
+		  </p>
+		  <input type="submit" value="&#xf099 Tweet" class="tweetbutton">
+		</form>
+
+		$if newstring != "none":
+			<p id="translation">$newstring</p>
+
+	</article>

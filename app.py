@@ -8,6 +8,8 @@ import multiprocessing
 from time import sleep
 from credentials import *
 import censorship
+from aldict import ascii_dict
+from aldict import leet_dict
 
 
 # import functions
@@ -28,6 +30,22 @@ urls = (
 )
 app = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
+
+# translation to ascii or leet
+
+
+def translate(tweetvar, c):
+    if c == 'a':
+        tweetvar = tweetvar.lower()
+        for key in ascii_dict:
+            if key in tweetvar:
+                tweetvar = tweetvar.replace(key, ascii_dict[key])
+    else:
+        for key in leet_dict:
+            if key in tweetvar:
+                tweetvar = tweetvar.replace(key, leet_dict[key])
+    return tweetvar
+
 
 # begin tweet functions here
 
@@ -93,8 +111,9 @@ def auto_tweet_file(filename, seconds):
     fout.close()
     for line in file_lines:
         try:
-            if line != '\n' and censor(line):
-                api.update_status(line)
+            if line != '\n':
+                if censor(line):
+                    api.update_status(line)
             else:
                 pass
         except tweepy.TweepError as e:
@@ -116,15 +135,22 @@ def follow_followers():
 # begin web rendering classes here
 class index(object):
     def GET(self):
-        return render.index()
+        return render.index(newstring="none")
 
     def POST(self):
         form = web.input()
         try:
             tweetvar = "%s" % (form.tweet)
             if censor(tweetvar):
-                if tweet_text(tweetvar):
-                    return render.confirmtweet(tweetvar=tweetvar)
+                if form.translate == "ascii":
+                    tweetvar = translate(tweetvar, 'a')
+                    return render.index(newstring=tweetvar)
+                elif form.translate == "leet":
+                    tweetvar = translate(tweetvar, 'l')
+                    return render.index(newstring=tweetvar)
+                else:
+                    if tweet_text(tweetvar):
+                        return render.confirmtweet(tweetvar=tweetvar)
             else:
                 return render.confirmtweet(tweetvar="profanity")
         except:
@@ -149,6 +175,8 @@ class features:
         seconds = float(form.seconds if form.seconds else 86400)
         iterations = int(form.iterations if form.iterations else 3)
         xfollowers = int((form.xfollowers) if form.xfollowers else 3)
+        if not censor(searchterms):
+            return render.confirmtweet(tweetvar="profanity")
         try:
             if form.retweet:
                 if retweet_follow(searchterms) is not True:
