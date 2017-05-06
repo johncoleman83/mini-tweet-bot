@@ -6,10 +6,12 @@ import web
 import tweepy
 import multiprocessing
 from time import sleep
-from credentials import *
+#from credentials import *
 import censorship
+import sys
+import os.path
 
-
+print(sys.path)
 #import functions
 remove_whitespace = censorship.remove_whitespace
 censor = censorship.censor
