@@ -8,13 +8,18 @@ import multiprocessing
 from time import sleep
 from credentials import *
 import censorship
+
+
+#import functions
 remove_whitespace = censorship.remove_whitespace
 censor = censorship.censor
 
+# tweepy
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
+# web.py
 urls = (
     '/', 'index',
     '/confirmtweet', 'confirmtweet',
@@ -24,7 +29,7 @@ urls = (
 app = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
 
-
+#begin tweet functions here
 def tweet_text(tweetvar):
     """ tweets text from input variable """
     try:
@@ -36,7 +41,7 @@ def tweet_text(tweetvar):
 
 def retweet_follow(searchterms):
     """searches tweets with searchterms, retweets, then follows"""
-    for tweet in tweepy.Cursor(api.search, q=searchterms).items(10):
+    for tweet in tweepy.Cursor(api.search, q=searchterms).items(60):
         try:
             tweet.retweet()
             if not tweet.user.following:
@@ -48,11 +53,11 @@ def retweet_follow(searchterms):
     return False
 
 
-def follow_ten(searchterms):
+def follow_x(searchterms, xfollowers):
     """follow ten new followers based on given searchterms"""
     retval = False
-    for x in range(10):
-        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
+    for x in range(xfollowers):
+        for tweet in tweepy.Cursor(api.search, q=searchterms).items(60):
             try:
                 if not tweet.user.following:
                     tweet.user.follow()
@@ -63,10 +68,10 @@ def follow_ten(searchterms):
                 pass
     return retval
 
-def auto_retweet(searchterms, seconds):
+def auto_retweet(searchterms, seconds, iterations):
     """ searches for tweets, attempts to retweet, follows, and repeat """
-    for x in range(25):
-        for tweet in tweepy.Cursor(api.search, q=searchterms).items(50):
+    for x in range(iterations):
+        for tweet in tweepy.Cursor(api.search, q=searchterms).items(60):
             try:
                 tweet.retweet()
                 if not tweet.user.following:
@@ -105,6 +110,7 @@ def follow_followers():
                 pass
 
 
+# begin web rendering classes here
 class index(object):
     def GET(self):
         return render.index()
@@ -119,7 +125,7 @@ class index(object):
             else:
                 return render.confirmtweet(tweetvar="profanity")
         except:
-            return render.confirmtweet(tweetvar="failure")
+            pass
         return render.confirmtweet(tweetvar="failure")
 
 
@@ -135,32 +141,28 @@ class features:
     def POST(self):
         form = web.input(inputfile={})
         failcount = 0
+        searchterms = ("%s" % (form.searchterms) if form.searchterms
+                       else "#opensource")
+        seconds = float(form.seconds if form.seconds else 86400)
+        iterations = int(form.iterations if form.iterations else 3)
+        xfollowers = int((form.xfollowers) if form.xfollowers else 3)
+        rferror = ""
         try:
             if form.retweet:
-                if form.searchterms:
-                    searchterms = "%s" % (form.searchterms)
-                    if retweet_follow(searchterms) is False:
-                        failcount += 1
-                else:
-                    if retweet_follow("#diversity") is False:
-                        failcount += 1
+                if retweet_follow(searchterms) is not True:
+                    failcount += 1
         except:
             failcount += 1
             pass
         try:
-            if form.followthem:
+            if form.followfollowers:
                 follow_followers()
         except:
             failcount += 1
             pass
         try:
-            if form.followten:
-                if form.searchterms:
-                    searchterms = "%s" % (form.searchterms)
-                    if follow_ten(searchterms) is False:
-                        failcount += 1
-                else:
-                    if follow_ten("#opensource") is False:
+            if form.followx:
+                if follow_x(searchterms, xfollowers) is False:
                         failcount += 1
         except:
             failcount += 1
@@ -173,38 +175,23 @@ class features:
                     fout = open(filename, 'w')
                     fout.write(form.inputfile.file.read())
                     fout.close()
-                    try:
-                        seconds = form.seconds
-                        p = multiprocessing.Process(target=auto_tweet_file,
-                                                    args=(filename,
-                                                          float(seconds)))
-                        p.start()
-                    except:
-                        p = multiprocessing.Process(target=auto_tweet_file,
-                                                    args=(filename,
-                                                          float(86400)))
-                        p.start()
+                    p = multiprocessing.Process(target=auto_tweet_file,
+                                                args=(filename, seconds))
+                    p.start()
         except:
             failcount += 1
             pass
         try:
             if form.autoretweet:
-                if form.seconds:
-                    seconds = form.seconds
-                else:
-                    seconds = 86400
-                if form.searchterms:
-                    searchterms = "%s" % (form.searchterms)
-                else:
-                    searchterms = "#opensource #GNU"
                 p = multiprocessing.Process(target=auto_retweet,
-                                            args=(searchterms, float(seconds)))
+                                            args=(searchterms, seconds,
+                                                  iterations))
                 p.start()
         except:
             failcount += 1
             pass
         if failcount == 5:
-            return render.confirmfeature(status="failure")
+            return render.confirmfeature(status="failure",error=rferror)
         else:
             return render.confirmfeature(status="success")
 

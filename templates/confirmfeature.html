@@ -1,18 +1,28 @@
-$def with (status)
+$def with (status, error)
 	$if status == "success":
 		<article class="confirmation">
-			<p>success! <i class="fa fa-smile-o" aria-hidden="true"></i></p>
-			<p>initiated features</p>
+		  <p>
+			<i class="fa fa-twitter" aria-hidden="true"></i><br>
+			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
+		  </p>
+		  <p>initiated features</p>
 
 	$else:
 		<article class="failure">
-			<p>unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i></p>
-			<p>your tweet failed possibly to these reasons:<br>
-			  are your search terms going to return any results?<br>
-			  is this a repeated tweet?<br>
-			  did you reach your max tweets?<br>
-			  did you follow twitter's API rules?
-			</p>
+		  <p>
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i><br>
+			unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i><br>
+			your tweet failed possibly due to these reasons:
+		  </p>
+		  <p style="font-size: 18px;">
+			did you input and check the correct boxes?<br>
+			did you follow twitter's API rules?<br>
+			are your search terms going to return any results?<br>
+			is this a repeated tweet?<br>
+			did you reach your max tweets?<br>
+		  </p>
+		  <p style="font-size:18px;">$error</p>
 
 </article>
 </article>

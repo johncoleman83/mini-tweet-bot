@@ -8,11 +8,29 @@
 				 name="retweet"
 				 > retweet & follow<br>
 		  <input type="checkbox"
-				 name="followten"
-				 > follow 10<br>
+				 name="followfollowers"
+				 > follow followers<br>
+		  <input type="checkbox"
+				 name="follown"
+				 > follow X more<br>
+		  <input type="number"
+				 name="xfollowers"
+				 min="1"
+				 max="20"
+				 step="1"
+				 title="min: 1, max: 20 more followers">
+		  <span style="font-size: 15px;">  :X users</span><br>
   		  <input type="checkbox"
 				 name="autoretweet"
 				 > auto retweet<br>
+		  <input type="number"
+				 name="iterations"
+				 min="3"
+				 max="25"
+				 step="1"
+				 title="min: 3, max: 25 iterations">
+		  <span style="font-size: 15px;"> :Y iterations</span>
+		  <br>
 		  <strong>Search Terms:</strong><br>
 		  <input type="text"
 				 name="searchterms"
@@ -24,22 +42,19 @@
 		  <span style="font-size:15px">
 			(default: '#diversity')</span><br>
 		  <input type="checkbox"
-				 name="followthem"
-				 > follow followers<br>
-		  <input type="checkbox"
 				 name="autotweet"
 				 > auto tweet file<br>
-		  <a style="font-size: 12px;"
+		  <a style="font-size: 14px;"
 			 href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/support/daffodils.txt"
 			 target="_blank">click here for example file</a><br/>
 		  <input type="file" name="inputfile" accept=".txt"><br>
-		  <strong>interval:</strong> N seconds<br />
 		  <input type="number"
 				 name="seconds"
 				 min="10800"
 				 max="600000"
 				 step="60"
-				 title="min: 3 hours to max: 7 days in seconds"><br>
+				 title="min: 3 hours to max: 7 days in seconds">
+		  <span style="font-size: 14px;">  :N seconds</span><br>
 		  <span style="font-size:15px">(default: 86400 seconds; i.e. 1 day)</span><br />
 		  <input type="submit" value="&#xf099 Automate" class="tweetbutton">
 		</form>
