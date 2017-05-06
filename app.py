@@ -10,7 +10,7 @@ from credentials import *
 import censorship
 
 
-#import functions
+# import functions
 remove_whitespace = censorship.remove_whitespace
 censor = censorship.censor
 
@@ -29,7 +29,9 @@ urls = (
 app = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
 
-#begin tweet functions here
+# begin tweet functions here
+
+
 def tweet_text(tweetvar):
     """ tweets text from input variable """
     try:
@@ -67,6 +69,7 @@ def follow_x(searchterms, xfollowers):
                 print(e.reason)
                 pass
     return retval
+
 
 def auto_retweet(searchterms, seconds, iterations):
     """ searches for tweets, attempts to retweet, follows, and repeat """
@@ -191,7 +194,7 @@ class features:
             failcount += 1
             pass
         if failcount == 5:
-            return render.confirmfeature(status="failure",error=rferror)
+            return render.confirmfeature(status="failure", error=rferror)
         else:
             return render.confirmfeature(status="success")
 
