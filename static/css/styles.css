@@ -471,6 +471,10 @@ footer a {
 
 @media (max-width: 600px) {
 
+	#translation {
+		margin: 0% 2%;
+	}
+
 	#menu-logo {
 		width: 43px;
 		height: 43px;
