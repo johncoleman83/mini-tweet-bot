@@ -56,7 +56,7 @@ in IBM Bluemix CF
 * `./manifest.yml`: Supports cloud foundry command line interface.
 * `./runtime.txt`: informs cloudfoundry of what version of python to run
 
-## python app files
+### python app files
 
 * `./app.py`
 
@@ -83,25 +83,25 @@ in IBM Bluemix CF
 
   contains information on the modules necessary to run this app
 
-## `./static/`
+### `./static/`
 
   This directory contains all  website support files such as `.css`, `.js`, and
   fontasesome.io integrations
 
 ### `./support/`
 
-This directory contains old files from Cloud Foundry template, that I did not
-use, and some other support files explained below.
+  This directory contains old files from Cloud Foundry template, that I did not
+  use, and some other support files explained below.
 
 * `./support/daffodils.txt`
 
-Example file to show how to input text to automate texting from a file. Each
-line from the file is tweeted every N seconds.
+  Example file to show how to input text to automate texting from a file. Each
+  line from the file is tweeted every N seconds.
 
 * `./support/retweet_follow.py`, `./singletweet.py/`, `./tweet_textfile.py`
 
-These are example files that contain only one function for the event that
-someone wants to make a twitter bot without integration into the cloud.
+  These are example files that contain only one function for the event that
+  someone wants to make a twitter bot without integration into the cloud.
 
 ### `./templates/`
 
