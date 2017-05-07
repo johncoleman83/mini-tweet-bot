@@ -125,13 +125,17 @@ in IBM Bluemix CF
 
 * from local machine:
 
-  ```$ python3 app.py```
+  ```
+  $ python3 app.py
+  ```
 
 * with cloudfoundry CLI:
 
-  ```$ cf login -a api.[my-cloudfoundry].com
+  ```
+  $ cf login -a api.[my-cloudfoundry].com
   $ cd [my-app-directory]
-  $ cf push```
+  $ cf push
+  ```
 
 ## build your own bot
 
