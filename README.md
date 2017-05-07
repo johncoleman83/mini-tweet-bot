@@ -134,8 +134,10 @@ in IBM Bluemix CF
   ```
   $ cf login -a api.[my-cloudfoundry].com
   $ cd [my-app-directory]
-  $ cf push
+  $ cf push -b https://github.com/heroku/heroku-buildpack-python.git
   ```
+  Note: use latest heroku python buildpack for most updated python & pip
+  versions
 
 ## build your own bot
 
