@@ -9,12 +9,12 @@ import cv2
 from flask import Flask, render_template, request, jsonify
 from werkzeug import secure_filename
 from time import sleep
-from credentials import *
-
+from credentials import (consumer_key, consumer_secret, access_token,
+                         access_token_secret)
+from camera import take_picture
 # custom imports
 import censorship
-from aldict import ascii_dict
-from aldict import leet_dict
+from aldict import ascii_dict, leet_dict
 
 # custom variable names from imports
 remove_whitespace = censorship.remove_whitespace
@@ -37,24 +37,6 @@ ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
-# camera functions
-def get_image():
-    retval, im = camera.read()
-    return im
-
-
-def take_picture():
-    camera_port = 0
-    ramp_frames = 30
-    camera = cv2.VideoCapture(camera_port)
-    for i in range(ramp_frames):
-        temp = get_image()
-    camera_capture = get_image()
-    file = "image_upload.png"
-    cv2.imwrite(file, camera_capture)
-    del(camera)
 
 
 # translation to ascii or leet
@@ -195,6 +177,11 @@ def index():
                     if tweet_image(filename, tweetvar):
                         return render_template('confirmtweet.html',
                                                tweetvar=tweetvar)
+            elif request.form['action'] == 'selfie':
+                filename = take_picture()
+                if tweet_image(filename, tweetvar):
+                    return render_template('confirmtweet.html',
+                                           tweetvar=tweetvar)
             elif tweet_text(tweetvar):
                 return render_template('confirmtweet.html', tweetvar=tweetvar)
         return render_template('confirmtweet.html', tweetvar='failure')
@@ -269,6 +256,11 @@ def features():
 @app.route('/confirmfeature')
 def confirmfeature():
     return render_template('confirmfeature.html', status='failure')
+
+
+@app.route('/are-no-one')
+def easteregg():
+    return render_template('easteregg.html', status='failure')
 
 
 @app.errorhandler(404)
