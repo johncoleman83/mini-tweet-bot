@@ -8,6 +8,7 @@ import multiprocessing
 import os
 from time import sleep
 from credentials import *
+from werkzeug import secure_filename
 
 # censoring functions
 import censorship
@@ -28,6 +29,8 @@ api = tweepy.API(auth)
 #flask
 app = Flask(__name__)
 port = int(os.getenv('PORT', 8080))
+UPLOAD_FOLDER = './uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # translation to ascii or leet
 
@@ -172,45 +175,31 @@ def features():
         if not censor(searchterms):
             return render_template('confirmtweet.html', tweetvar='profanity')
         try:
-            if 'retweet' in request.form:
+            if request.form['retweet']:
                 if retweet_follow(searchterms) is not True:
                     failcount += 1
-            else:
-                failcount += 1
         except:
             failcount += 1
         try:
             if request.form['followfollowers']:
                 follow_followers()
-            else:
-                failcount += 1
         except:
             failcount += 1
         try:
-            if 'followx' in request.form:
+            if request.form['followx']:
                 if follow_x(searchterms, xfollowers) is False:
                     failcount += 1
-            else:
-                failcount += 1
         except:
             failcount += 1
         try:
-            if request.form['autotweet']:
-                if 'file' in request.files:
-                    inputfile = request.files['file']
-                    filename = inputfile.filename;
-                    # break old code
-                    # filepath = form.inputfile.filename.replace('\\', '/')
-                    # filename = filepath.split('/')[-1]
-                    # fout = open(filename, 'w')
-                    # fout.write(form.inputfile.file.read())
-                    # fout.close()
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    p = multiprocessing.Process(target=auto_tweet_file,
-                                                args=(filename, seconds))
-                    p.start()
-            else:
-                failcount += 1
+            if request.form['autotweet'] and request.files['file']:
+                file = request.files['file']
+                filename = secure_filename(file.filename)
+                filename = os.path.join(UPLOAD_FOLDER, filename)
+                file.save(filename)
+                p = multiprocessing.Process(target=auto_tweet_file,
+                                            args=(filename, seconds))
+                p.start()
         except:
             failcount += 1
         try:
@@ -219,8 +208,6 @@ def features():
                                             args=(searchterms, seconds,
                                             iterations))
                 p.start()
-            else:
-                failcount += 1
         except:
             failcount += 1
         if failcount >= 5:
