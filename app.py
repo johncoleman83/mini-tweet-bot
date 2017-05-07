@@ -2,22 +2,21 @@
 app python mini tweet bot application
 takes user input and tweets to designated account
 """
-from flask import Flask, render_template, request, jsonify
 import tweepy
 import multiprocessing
 import os
+import cv2
+from flask import Flask, render_template, request, jsonify
+from werkzeug import secure_filename
 from time import sleep
 from credentials import *
-from werkzeug import secure_filename
 
-# censoring functions
+# custom imports
 import censorship
-
-# dictionaries
 from aldict import ascii_dict
 from aldict import leet_dict
 
-# import functions
+# custom variable names from imports
 remove_whitespace = censorship.remove_whitespace
 censor = censorship.censor
 
@@ -26,11 +25,37 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-#flask
+# flask integrations
 app = Flask(__name__)
 port = int(os.getenv('PORT', 8080))
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg', 'gif'])
+
+
+# flask support function to verify file import type
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+# camera functions
+def get_image():
+    retval, im = camera.read()
+    return im
+
+
+def take_picture():
+    camera_port = 0
+    ramp_frames = 30
+    camera = cv2.VideoCapture(camera_port)
+    for i in range(ramp_frames):
+        temp = get_image()
+    camera_capture = get_image()
+    file = "image_upload.png"
+    cv2.imwrite(file, camera_capture)
+    del(camera)
+
 
 # translation to ascii or leet
 
@@ -58,6 +83,17 @@ def tweet_text(tweetvar):
     except:
         return False
     return True
+
+
+def tweet_image(filename, tweetvar):
+    """ tweets image with status """
+    try:
+        api.update_with_media(filename, tweetvar)
+        return True
+    except tweepy.TweepError as e:
+            print(e.reason)
+            pass
+    return False
 
 
 def retweet_follow(searchterms):
@@ -132,31 +168,42 @@ def follow_followers():
                 print(e.reason)
                 pass
 
+# begin flask template rendering
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         return render_template('index.html', newstring="none")
     if request.method == 'POST':
         tweetvar = request.form['tweet']
-        if censor(tweetvar):
-            if request.form['translate'] == "ascii":
-                tweetvar = translate(tweetvar, 'a')
-            elif request.form['translate'] == "leet":
-                tweetvar = translate(tweetvar, 'l')
-            if request.form['action'] == 'translate':
-                return render_template('index.html', newstring=tweetvar)
-            else:
-                if tweet_text(tweetvar):
-                    return render_template('confirmtweet.html',
-                                               tweetvar=tweetvar)
+        if not censor(tweetvar):
+            return render_template('confirmtweet.html', tweetvar="profanity")
+        if request.form['translate'] == "ascii":
+            tweetvar = translate(tweetvar, 'a')
+        elif request.form['translate'] == "leet":
+            tweetvar = translate(tweetvar, 'l')
+        if request.form['action'] == 'translate':
+            return render_template('index.html', newstring=tweetvar)
         else:
-            return render_template('confirmtweet.html',
-                                       tweetvar="profanity")
+            if request.files['file']:
+                file = request.files['file']
+                if allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    filename = os.path.join(UPLOAD_FOLDER, filename)
+                    file.save(filename)
+                    if tweet_image(filename, tweetvar):
+                        return render_template('confirmtweet.html',
+                                               tweetvar=tweetvar)
+            elif tweet_text(tweetvar):
+                return render_template('confirmtweet.html', tweetvar=tweetvar)
         return render_template('confirmtweet.html', tweetvar='failure')
+
 
 @app.route('/confirmtweet')
 def confirmtweet():
     return render_template('confirmtweet.html', tweetvar='failure')
+
 
 @app.route('/features', methods=['GET', 'POST'])
 def features():
@@ -194,19 +241,22 @@ def features():
         try:
             if request.form['autotweet'] and request.files['file']:
                 file = request.files['file']
-                filename = secure_filename(file.filename)
-                filename = os.path.join(UPLOAD_FOLDER, filename)
-                file.save(filename)
-                p = multiprocessing.Process(target=auto_tweet_file,
-                                            args=(filename, seconds))
-                p.start()
+                if allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    filename = os.path.join(UPLOAD_FOLDER, filename)
+                    file.save(filename)
+                    p = multiprocessing.Process(target=auto_tweet_file,
+                                                args=(filename, seconds))
+                    p.start()
+                else:
+                    failcount += 1
         except:
             failcount += 1
         try:
             if request.form['autoretweet']:
                 p = multiprocessing.Process(target=auto_retweet,
                                             args=(searchterms, seconds,
-                                            iterations))
+                                                  iterations))
                 p.start()
         except:
             failcount += 1

@@ -2,7 +2,7 @@
 {% block content %}
 	<article>
 		<br/>
-		<form action="/" method="POST">
+		<form action="/" method="POST" enctype="multipart/form-data">
 		  <input type="text"
 				 name="tweet"
 				 id="tweet-input"
@@ -10,6 +10,7 @@
 				 pattern=".{5,140}" required
 				 title="min: 5 to max: 140 characters"
 				 ><br>
+		  <input type="file" name="file" accept=".png,.jpg,.jpeg,.gif">
 		  <select name="translate">
 			<option value="none">none</option>
 			<option value="ascii">ascii art</option>

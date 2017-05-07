@@ -4,12 +4,14 @@
 
 ### python
 
-  * __language:__ Python 2.7.10
-  * __libraries:__ tweepy, time, multiprocessing
-  * __web framework:__ web.py
+  * __language:__ Python 3.6.1
+  * __libraries:__ tweepy, time, multiprocessing, opencv-python, numpy, workzeug
+  * __web framework:__ flask
   * __style__: PEP 8: https://www.python.org/dev/peps/pep-0008/
 
-  	* Note: for python3 `$ pip3 install git+https://github.com/webpy/webpy#egg=web.py`
+  	* Note: for python-2.7.10, download the .zip file from the Release v0.0.4 -
+	this older release uses web.py:
+	  * https://github.com/johncoleman83/mini-tweet-bot/releases/tag/v0.0.4
 
 ### cloud:
 
@@ -55,6 +57,8 @@ from the below referenced repository.  Or read the blog post referenced above.
 in IBM Bluemix CF
 * `./manifest.yml`: Supports cloud foundry command line interface.
 * `./runtime.txt`: informs cloudfoundry of what version of python to run
+* `./requirements.txt`: contains the required python libraries to be installed
+  during the cloudfoundry building process
 
 ### python app files
 
@@ -73,7 +77,9 @@ in IBM Bluemix CF
   to make your own twitter bot, you should rename this file `credentials.py` so
   that it is imported into `app.py` with the line: `from credentials import *`
 
-* `./profanity.py`, `./suppprt/profanity.txt`, `aldict.py`
+### Dictionaries:
+
+  * `./profanity.py`, `./suppprt/profanity.txt`, `aldict.py`
 
   `profanity.py`: set of profaine words; contains 700+ words.  the `.py`
   file contains a set and is imported into the `censorship.py` module, the
@@ -110,6 +116,10 @@ in IBM Bluemix CF
   This contains all the HTML content as rendered with python.  I used one file
   as a base layout which contains the same head, header, sidebar, and footer.
   The main content in the article section changes per GET and POST call.
+
+### `./uploads/`
+
+  directory to store uploads from user input
 
 ## usage
 
