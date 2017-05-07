@@ -1,5 +1,5 @@
 ---
 applications:
- - name: mtb-flask
+ - name: mtb
    random-route: true
    memory: 128M
