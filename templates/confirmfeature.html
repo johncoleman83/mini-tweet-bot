@@ -1,13 +1,13 @@
-$def with (status)
-	$if status == "success":
+{% extends "layout.html" %}
+{% block content %}
+	{% if status == "success" %}
 		<article class="confirmation">
 		  <p>
 			<i class="fa fa-twitter" aria-hidden="true"></i><br>
 			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
 		  </p>
 		  <p>initiated features</p>
-
-	$else:
+	{% else %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -22,6 +22,6 @@ $def with (status)
 			is this a repeated tweet?<br>
 			did you reach your max tweets?<br>
 		  </p>
-
+	{% endif %}
 </article>
-</article>
+{% endblock %}

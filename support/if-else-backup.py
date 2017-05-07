@@ -133,110 +133,114 @@ def follow_followers():
 def index():
     if request.method == 'GET':
         return render_template('index.html', newstring="none")
-    if request.method == 'POST':
-        tweetvar = request.form['tweet']
-        if censor(tweetvar):
-            if request.form['translate'] == "ascii":
-                tweetvar = translate(tweetvar, 'a')
-            elif request.form['translate'] == "leet":
-                tweetvar = translate(tweetvar, 'l')
-            if request.form['action'] == 'translate':
-                return render_template('index.html', newstring=tweetvar)
-            else:
-                if tweet_text(tweetvar):
-                    return render_template('confirmtweet.html',
+    else:
+        try:
+            tweetvar = request.form['tweet']
+            if censor(tweetvar):
+                if request.form['translate'] == "ascii":
+                    tweetvar = translate(tweetvar, 'a')
+                    return render_template('index.html', newstring=tweetvar)
+                elif request.form['translate'] == "leet":
+                    tweetvar = translate(tweetvar, 'l')
+                    return render_template('index.html', newstring=tweetvar)
+                else:
+                    if tweet_text(tweetvar):
+                        return render_template('confirmtweet.html',
                                                tweetvar=tweetvar)
-        else:
-            return render_template('confirmtweet.html',
+            else:
+                return render_template('confirmtweet.html',
                                        tweetvar="profanity")
-        return render_template('confirmtweet.html', tweetvar='failure')
+        except:
+            pass
+        return render_template('confirmtweet.html', tweetvar="failure")
 
 @app.route('/confirmtweet')
 def confirmtweet():
-    return render_template('confirmtweet.html', tweetvar='failure')
+    return render_template('confirmtweet.html', tweetvar="failure")
 
 @app.route('/features', methods=['GET', 'POST'])
 def features():
     if request.method == 'GET':
         return render_template('features.html')
-    if request.method == 'POST':
+    else:
+        if 'inputfile' in request.files:
+            inputfile = request.files['inputfile']
         failcount = 0
-        searchterms = (request.form['searchterms']
-                       if request.form['searchterms'] else '#opensource')
-        seconds = float(request.form['seconds'] if request.form['seconds']
-                        else 86400)
-        iterations = int(request.form['iterations']
-                         if request.form['iterations'] else 3)
-        xfollowers = int(request.form['xfollowers']
-                         if request.form['xfollowers'] else 3)
+        if 'searchterms' in request.form:
+            searchterms = request.form['searchterms']
+        else:
+            searchterms = '#opensource'
+        if 'seconds' in request.form:
+            seconds = float(request.form['seconds'])
+        else:
+            seconds = float(86400)
+        if 'iterations' in request.form:
+            iterations = int(request.form['iterations'])
+        else:
+            iterations = 3
+        if 'xfollowers' in request.form:
+            xfollowers = int(request.form['xfollowers'])
+        else:
+            xfollowers = 3
         if not censor(searchterms):
-            return render_template('confirmtweet.html', tweetvar='profanity')
+            return render.confirmtweet(tweetvar="profanity")
         try:
-            if 'retweet' in request.form:
+            if form.retweet:
                 if retweet_follow(searchterms) is not True:
                     failcount += 1
-            else:
-                failcount += 1
         except:
             failcount += 1
+            pass
         try:
-            if request.form['followfollowers']:
+            if form.followfollowers:
                 follow_followers()
-            else:
-                failcount += 1
         except:
             failcount += 1
+            pass
         try:
-            if 'followx' in request.form:
+            if form.followx:
                 if follow_x(searchterms, xfollowers) is False:
-                    failcount += 1
-            else:
-                failcount += 1
+                        failcount += 1
         except:
             failcount += 1
+            pass
         try:
-            if request.form['autotweet']:
-                if 'file' in request.files:
-                    inputfile = request.files['file']
-                    filename = inputfile.filename;
-                    # break old code
-                    # filepath = form.inputfile.filename.replace('\\', '/')
-                    # filename = filepath.split('/')[-1]
-                    # fout = open(filename, 'w')
-                    # fout.write(form.inputfile.file.read())
-                    # fout.close()
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            if form.autotweet:
+                if 'inputfile' in form:
+                    filepath = form.inputfile.filename.replace('\\', '/')
+                    filename = filepath.split('/')[-1]
+                    fout = open(filename, 'w')
+                    fout.write(form.inputfile.file.read())
+                    fout.close()
                     p = multiprocessing.Process(target=auto_tweet_file,
                                                 args=(filename, seconds))
                     p.start()
-            else:
-                failcount += 1
         except:
             failcount += 1
+            pass
         try:
-            if request.form['autoretweet']:
+            if form.autoretweet:
                 p = multiprocessing.Process(target=auto_retweet,
                                             args=(searchterms, seconds,
-                                            iterations))
+                                                  iterations))
                 p.start()
-            else:
-                failcount += 1
         except:
             failcount += 1
-        if failcount >= 5:
-            return render_template('confirmfeature.html', status='failure')
+            pass
+        if failcount == 5:
+            return render.confirmfeature(status="failure")
         else:
-            return render_template('confirmfeature.html', status='success')
+            return render.confirmfeature(status="success")
 
 
-@app.route('/confirmfeature')
-def confirmfeature():
-    return render_template('confirmfeature.html', status='failure')
+class confirmfeature:
+    def GET(self):
+        return render.confirmfeature(status="")
 
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html'), 404
+    return render_template('page_not_found.html'), 404
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port, debug=True)

@@ -1,4 +1,5 @@
-$def with (newstring)
+{% extends "layout.html" %}
+{% block content %}
 	<article>
 		<br/>
 		<form action="/" method="POST">
@@ -14,17 +15,24 @@ $def with (newstring)
 			<option value="ascii">ascii art</option>
 			<option value="leet">L337</option>
 		  </select>
-		  <input type="submit" value="translate" class="translatebutton"><br>
+		  <input type="submit"
+				 name="action"
+				 value="translate"
+				 class="translatebutton"><br>
 		  <p id="rules">*participation requires compliance with:<br>
 			<a href="https://support.twitter.com/articles/18311"
 			   target="_blank">
 			  "The Twitter Rules"
 			</a>.
 		  </p>
-		  <input type="submit" value="&#xf099 Tweet" class="tweetbutton">
+		  <input type="submit"
+				 name="action"
+				 value="&#xf099 Tweet"
+				 class="tweetbutton">
 		</form>
 
-		$if newstring != "none":
-			<p id="translation">$newstring</p>
-
+		{% if newstring != "none" %}
+		<p id="translation">{{ newstring }}</p>
+		{% endif %}
 	</article>
+{% endblock %}

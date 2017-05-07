@@ -1,5 +1,6 @@
-$def with (tweetvar)
-	$if tweetvar == "profanity":
+{% extends "layout.html" %}
+{% block content %}
+	{% if tweetvar == "profanity" %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -7,8 +8,7 @@ $def with (tweetvar)
 			unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i>
 		  </p>
 		  <p>please don't use profanity</p>
-
-	$elif tweetvar == "failure":
+	{% elif tweetvar == "failure" %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -21,13 +21,13 @@ $def with (tweetvar)
 			is this a repeated tweet?<br>
 			did you reach your max tweets?<br>
 		  </p>
-
-	$else:
+	{% else %}
 		<article class="confirmation">
 		  <p>
 			<i class="fa fa-twitter" aria-hidden="true"></i><br>
 			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
 		  </p>
-		  <p>$tweetvar</p>
-
+		  <p>{{ tweetvar }}</p>
+	{% endif %}
 </article>
+{% endblock %}

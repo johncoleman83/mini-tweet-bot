@@ -1,4 +1,3 @@
-$def with (content)
 <!doctype html>
 <html lang="en">
 	<head>
@@ -126,7 +125,8 @@ $def with (content)
 		  </ul>
 		</div>
 	  </div>
-$:content
+      {% block content %}
+      {% endblock %}
 	  <aside>
 		  <a class="twitter-timeline" data-link-color="#2B7BB9"
 			 href="https://twitter.com/are_no_one">Tweets by are_no_one</a>
