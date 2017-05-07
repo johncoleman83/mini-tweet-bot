@@ -1,4 +1,3 @@
-$def with (content)
 <!doctype html>
 <html lang="en">
 	<head>
@@ -73,12 +72,17 @@ $def with (content)
 		  <strong>home page</strong>
 		  <ul>
 			<li><strong>translate</strong>: choose between ascii art or L337, to
-			  receive a string of your translated text
+			  receive a string of your translated text. Clicking the 'translate'
+			  button does not tweet, and instead returns your translation.
+			  clicking 'tweet' button will tweet your translation.
 			</li>
 			<li><strong>shared twitter</strong> account for:
 			  <br>(1) a club, organization, or company
 			  <br>(2) photo spot at tourist destination or event
 			  <br>(3) public access for anyone --and their friends!
+			</li>
+			<li><strong>upload</strong>: upload a file to tweet along with a
+			  status update (image file extensions only)
 			</li>
 		  </ul>
 		  <strong>features page</strong>
@@ -107,15 +111,10 @@ $def with (content)
 			</li>
 			<li><strong>auto tweet file: </strong>
 			  (1) bot tweets a line form the input text file; (2) automation
-			  continues every N seconds until EOF (3) file must have .txt extension
-			  (4) bot will only tweet 140 chars from each line.
+			  continues every N seconds until EOF (3) file must have .txt
+			  extension (4) bot will only tweet 140 chars from each line.
 			  <br>(5) <a href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/support/daffodils.txt"
 						 target="_blank">click here for example file</a>
-			<li><strong>NOTE:</strong> if your tweets are not going through, it may
-			  be a result of twitter API restrictions or your query from your search
-			  terms may return no results, and thus not automate your request. To
-			  read more about twitter API, check out the blog, linked below.
-			</li>
 			<li><a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/"
 				   target="_blank">mini tweet bot blog:</a> read more details
 			  about how mini tweet bot works and troubleshooting issues at the
@@ -126,7 +125,8 @@ $def with (content)
 		  </ul>
 		</div>
 	  </div>
-$:content
+      {% block content %}
+      {% endblock %}
 	  <aside>
 		  <a class="twitter-timeline" data-link-color="#2B7BB9"
 			 href="https://twitter.com/are_no_one">Tweets by are_no_one</a>

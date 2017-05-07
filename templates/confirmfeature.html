@@ -1,13 +1,13 @@
-$def with (status)
-	$if status == "success":
+{% extends "layout.html" %}
+{% block content %}
+	{% if status == "success" %}
 		<article class="confirmation">
 		  <p>
 			<i class="fa fa-twitter" aria-hidden="true"></i><br>
 			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
 		  </p>
 		  <p>initiated features</p>
-
-	$else:
+	{% else %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -17,11 +17,13 @@ $def with (status)
 		  </p>
 		  <p style="font-size: 18px;">
 			did you input and check the correct boxes?<br>
+			is your file type allowed?<br>
 			did you follow twitter's API rules?<br>
 			are your search terms going to return any results?<br>
 			is this a repeated tweet?<br>
 			did you reach your max tweets?<br>
+			is your status update more than 140 characters?<br>
 		  </p>
-
+	{% endif %}
 </article>
-</article>
+{% endblock %}

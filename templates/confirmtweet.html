@@ -1,5 +1,6 @@
-$def with (tweetvar)
-	$if tweetvar == "profanity":
+{% extends "layout.html" %}
+{% block content %}
+	{% if tweetvar == "profanity" %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -7,8 +8,7 @@ $def with (tweetvar)
 			unsuccessful <i class="fa fa-frown-o" aria-hidden="true"></i>
 		  </p>
 		  <p>please don't use profanity</p>
-
-	$elif tweetvar == "failure":
+	{% elif tweetvar == "failure" %}
 		<article class="failure">
 		  <p>
 			<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
@@ -17,17 +17,19 @@ $def with (tweetvar)
 		  </p>
 		  <p style="font-size:18px;">
 			your tweet failed possibly to these reasons:<br>
+			is the file type allowed?<br>
 			are you following twitter's API rules?<br>
 			is this a repeated tweet?<br>
 			did you reach your max tweets?<br>
+			is your status update more than 140 characters?<br>
 		  </p>
-
-	$else:
+	{% else %}
 		<article class="confirmation">
 		  <p>
 			<i class="fa fa-twitter" aria-hidden="true"></i><br>
 			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
 		  </p>
-		  <p>$tweetvar</p>
-
+		  <p>{{ tweetvar }}</p>
+	{% endif %}
 </article>
+{% endblock %}

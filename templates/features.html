@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block content %}
 <article>
 	<div id="features-app">
 		<a id="features-two" href="#" style="font-size: 20px;">
@@ -47,7 +49,7 @@
 		  <a style="font-size: 14px;"
 			 href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/support/daffodils.txt"
 			 target="_blank">click here for example file</a><br/>
-		  <input type="file" name="inputfile" accept=".txt"><br>
+		  <input type="file" name="file" accept=".txt"><br>
 		  <input type="number"
 				 name="seconds"
 				 min="10800"
@@ -63,3 +65,4 @@
 		   target="_blank">"The Twitter Rules"</a>
 	</div>
 </article>
+{% endblock %}
