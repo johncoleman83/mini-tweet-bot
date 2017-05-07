@@ -177,7 +177,7 @@ def index():
                     if tweet_image(filename, tweetvar):
                         return render_template('confirmtweet.html',
                                                tweetvar=tweetvar)
-            elif request.form['action'] == 'selfie':
+            elif request.form['action'] == 'selfie from webcam':
                 filename = take_picture()
                 if tweet_image(filename, tweetvar):
                     return render_template('confirmtweet.html',

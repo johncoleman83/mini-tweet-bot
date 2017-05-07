@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
 	<article>
-		<br/>
+	  <div id="tweet-toolbox">
 		<form action="/" method="POST" enctype="multipart/form-data">
+		  <a id="features-two" href="#" style="font-size: 20px;">
+			<i class="fa fa-wrench" aria-hidden="true"></i> features
+		  </a><span id="flash"> &lt;--more info on features here!</span>
 		  <input type="text"
 				 name="tweet"
 				 id="tweet-input"
@@ -10,34 +13,38 @@
 				 pattern=".{5,140}" required
 				 title="min: 5 to max: 140 characters"
 				 ><br>
-		  upload image to tweet:
+		  <div id="toolbox-split">
+		  <div id="toolbox-left">
+			<p style="text-align: center; text-decoration: underline; margin: 3px">
+			  tweet image</p>
 		  <input type="file" name="file" accept=".png,.jpg,.jpeg,.gif"><br>
-		  tweet selfie from webcam:
 		  <input type="submit"
+				 id="selfie-button"
 				 name="action"
-				 value="selfie"
-				 class="translatebutton"><br>
-		  <select name="translate">
+				 value="selfie from webcam"
+				 class="toolbox-button">
+		  </div>
+		  <div id="toolbox-right">
+			<select name="translate">
 			<option value="none">none</option>
 			<option value="ascii">ascii art</option>
 			<option value="leet">L337</option>
-		  </select>
+			</select>
 		  <input type="submit"
 				 name="action"
 				 value="translate"
-				 class="translatebutton"><br>
-		  <p id="rules">*participation requires compliance with:<br>
-			<a href="https://support.twitter.com/articles/18311"
-			   target="_blank">
-			  "The Twitter Rules"
-			</a>.
-		  </p>
+				 class="toolbox-button"><br>
+		  *participation requires compliance with
+		  <a href="https://support.twitter.com/articles/18311"
+			 target="_blank">"The Twitter Rules"</a>.
+		  </div>
+		  </div>
 		  <input type="submit"
 				 name="action"
 				 value="&#xf099 Tweet"
 				 class="tweetbutton">
 		</form>
-
+	  </div>
 		{% if newstring != "none" %}
 		<p id="translation">{{ newstring }}</p>
 		{% endif %}

@@ -1,4 +1,4 @@
-/*! styles.css v2.0.2 */
+/*! styles.css v2.0.3 */
 @charset "UTF-8";
 
 /* ================
@@ -41,7 +41,7 @@ body {
 }
 
 input {
-    margin: 5px 0;
+    margin: 3px 0;
 }
 
 /* ========================
@@ -210,9 +210,20 @@ article {
 	margin: .5% 10%;
 }
 
-/* ================
-     TWEET BUTTON
-   ================ */
+/* ==================
+     TWEET TOOL BOX
+   ================== */
+
+#tweet-toolbox {
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px groove #717171;
+	padding: 10px;
+	margin: 1% auto;
+	width: 65%;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 4px 0px #353535;
+}
 
 #translation {
 	margin: 0% 20%;
@@ -228,7 +239,7 @@ article {
     color: #00;
 }
 
-.translatebutton {
+.toolbox-button {
 	background: #fff;
 	color: #000;
 	border-radius: 10px;
@@ -236,25 +247,12 @@ article {
 	border: 1px groove #339dc3;
 }
 
-#rules {
-	margin: 1% auto;
-	text-align: center;
-	width: 35%;
-	padding: 10px;
-	background: rgba(255, 255, 255, 0.9);
-	border: 1px groove #717171;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	box-shadow: 0px 0px 4px 0px #353535;
-}
-
 #tweet-input {
 	padding: 5px;
 	border: 0;
 	border-radius: 3px;
 	box-shadow: inset 0px 0px 4px 0px #353535;
-	width: 60%;
+	width: 95%;
 	font-size: 20px;
 }
 
@@ -276,6 +274,17 @@ article {
 .tweetbutton:hover {
 	background: #2683a5;
 	cursor: pointer;
+}
+
+#toolbox-split {
+	display: flex;
+	flex-direction: row;
+}
+
+#toolbox-left, #toolbox-right {
+	text-align: left;
+    padding: 0 0;
+	width: 50%;
 }
 
 /* ================
@@ -330,12 +339,12 @@ article {
 	position: fixed;
 	top: 95px;
 	left: 1%;
-	max-width: 60%;
+	max-width: 80%;
 }
 
 .features-box-data {
 	margin: 0;
-	padding: 2% 0 0 5%;
+	padding: 0% 0 0 2%;
 	background: rgba(255, 255, 255, 0.9);
 	border: 1px groove #717171;
 	border-radius: 10px;
@@ -353,6 +362,7 @@ article {
 
 .features-box-data ul {
 	padding: 0 10px;
+	margin: 0;
 }
 
 #search-input {
@@ -415,7 +425,7 @@ footer a {
 	}
 
 	.features-box-data li {
-		font-size: 16px;
+		font-size: 14px;
 	}
 }
 
@@ -450,7 +460,7 @@ footer a {
 	}
 
 	#features-outer {
-		max-width: 70%;
+		max-width: 90%;
 	}
 
 	#feature-form {
@@ -466,10 +476,29 @@ footer a {
 		width: 80%;
 		font-size: 12px;
 	}
+
+	#tweet-toolbox {
+		width: 73%;
+	}
+
+	#toolbox-split {
+		flex-direction: column;
+	}
+
+	#toolbox-left, #toolbox-right {
+		text-align: center;
+		padding: 0 0;
+		width: 100%;
+	}
+
 }
 
 
 @media (max-width: 600px) {
+
+	#selfie-button {
+		display: none;
+	}
 
 	#translation {
 		margin: 0% 2%;
@@ -483,9 +512,9 @@ footer a {
 	}
 
 	#features-outer {
-	    	top: 5px;
+	    top: 5px;
 		position: relative;
-		max-width: 90%;
+		max-width: 95%;
 		margin-top: 5px;
 	}
 

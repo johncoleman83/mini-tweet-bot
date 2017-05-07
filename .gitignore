@@ -2,12 +2,11 @@
 logs
 *.log
 
-# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL files / virtual env
 __pycache__/
 *.py[cod]
-
-# C extensions
-*.so
+*.pyc
+venv/
 
 # Distribution / packaging
 .Python
@@ -25,12 +24,12 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+
+# Secrets
 credentials.py
 credentials-djc.py
-
-# python virtual environment/compiled files
-venv/
-*.pyc
+vcap-local.json
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -53,7 +52,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *~
-test.txt
 
 # Translations
 *.mo
@@ -64,5 +62,3 @@ target/
 
 # Mac files
 *.DS_Store
-
-vcap-local.json

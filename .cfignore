@@ -1,9 +1,7 @@
 .gitignore
-LICENSE
-README.md
 vcap-local.json
 credentials-djc.py
 *~
-test.txt
 *.DS_Store
 *.pyc
+__pycache__
