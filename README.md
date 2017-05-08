@@ -8,10 +8,9 @@
   * __libraries:__ tweepy, time, multiprocessing, opencv-python, numpy, workzeug
   * __web framework:__ flask
   * __style__: PEP 8: https://www.python.org/dev/peps/pep-0008/
-
   	* Note: for python-2.7.10, download the .zip file from the Release v0.0.4 -
 	this older release uses web.py:
-	  * https://github.com/johncoleman83/mini-tweet-bot/releases/tag/v0.0.4
+	* https://github.com/johncoleman83/mini-tweet-bot/releases/tag/v0.0.4
 
 ### cloud:
 
