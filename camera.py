@@ -3,12 +3,15 @@ import cv2
 
 def take_picture():
     camera_port = 0
-    ramp_frames = 20
+    ramp_frames = 30
     camera = cv2.VideoCapture(camera_port)
     for i in range(ramp_frames):
         temp = camera.read()[1]
-    camera_capture = camera.read()[1]
+    while True:
+        img = camera.read()[1]
+        if img is not None:
+            break
     file = "./uploads/image_upload.png"
-    cv2.imwrite(file, camera_capture)
+    cv2.imwrite(file, img)
     del(camera)
     return file

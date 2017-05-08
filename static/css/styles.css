@@ -1,4 +1,4 @@
-/*! styles.css v2.0.3 */
+/*! styles.css v2.0.4 */
 @charset "UTF-8";
 
 /* ================
@@ -213,6 +213,12 @@ article {
 /* ==================
      TWEET TOOL BOX
    ================== */
+
+/* Current selfie camera not functioning on cloud
+#selfie-button {
+	display: none;
+}
+*/
 
 #tweet-toolbox {
 	background: rgba(255, 255, 255, 0.9);
