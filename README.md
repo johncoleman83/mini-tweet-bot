@@ -86,10 +86,6 @@ in IBM Bluemix CF
   list.  `aldict.py` contains the ascii-art and L337 translation
   dictionaries
 
-* `./requirements.txt`
-
-  contains information on the modules necessary to run this app
-
 ### `./static/`
 
   This directory contains all  website support files such as `.css`, `.js`, and
@@ -158,7 +154,8 @@ cloud.  However, if you would like to run the app on your own machine, you can
 run it, and it will be loaded on a local host port IP address such as:
 http://0.0.0.0:8080/.  If you do not want the user interface, you should then
 use only the tweet functions, and run them on an as needed basis.  Here is an
-example of how to run a single function from the `singletweet.py` file:
+example of how to run a single function from the `singletweet.py` file in the
+`./support` directory:
 
 ```
 $ cat singletweet.py
