@@ -23,6 +23,7 @@
 
   * __working app:__ https://mtb.mybluemix.net/
   * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
+  * __demo example:__ http://holberton-mtb.mybluemix.net/
 
 ### twitter:
 
