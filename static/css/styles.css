@@ -1,4 +1,4 @@
-/*! styles.css v2.0.7 */
+/*! styles.css v2.0.8 */
 @charset "UTF-8";
 
 /* ================
@@ -167,12 +167,18 @@ header ul a {
      MAIN CONTENT
    ================ */
 
+.gif {
+	box-shadow: 0 0 3px 3px #353535;
+	border: 1px solid #fff;
+	margin-top: 20px;
+}
+
 main {
 	display: flex;
 	flex-direction: row;
 	flex-flow: row wrap;
 	flex: auto;
-	background-image: url(/static/images/selfie.jpg);
+	background-image: url(/static/images/selfie-transparent.png);
 	background-size: 90%;
 	background-position-x: -180px;
 	background-repeat: no-repeat;
