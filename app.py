@@ -6,6 +6,7 @@ import tweepy
 import multiprocessing
 import os
 import cv2
+import time
 from flask import Flask, render_template, request, jsonify
 from werkzeug import secure_filename
 from time import sleep
@@ -39,9 +40,15 @@ def allowed_file(filename):
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+# adds date to input image file
+def add_date(filename):
+    extension = filename[-4:]
+    prefix = filename[:-4]
+    thedate = time.strftime("%d-%m-%y--%H:%M:%S")
+    return "{:}{:}{:}".format(prefix, thedate, extension)
+
+
 # translation to ascii or leet
-
-
 def translate(tweetvar, c):
     if c == 'a':
         tweetvar = tweetvar.lower()
@@ -173,12 +180,14 @@ def index():
                 if allowed_file(file.filename):
                     filename = secure_filename(file.filename)
                     filename = os.path.join(UPLOAD_FOLDER, filename)
+                    filename = add_date(filename)
                     file.save(filename)
                     if tweet_image(filename, tweetvar):
                         return render_template('confirmtweet.html',
                                                tweetvar=tweetvar)
             elif request.form['action'] == 'selfie from webcam':
                 filename = take_picture()
+                filename = add_date(filename)
                 if tweet_image(filename, tweetvar):
                     return render_template('confirmtweet.html',
                                            tweetvar=tweetvar)
@@ -231,6 +240,7 @@ def features():
                 if allowed_file(file.filename):
                     filename = secure_filename(file.filename)
                     filename = os.path.join(UPLOAD_FOLDER, filename)
+                    filename = add_date(filename)
                     file.save(filename)
                     p = multiprocessing.Process(target=auto_tweet_file,
                                                 args=(filename, seconds))
