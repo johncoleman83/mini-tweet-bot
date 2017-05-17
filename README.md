@@ -18,6 +18,7 @@
   * __platform:__ Cloud Foundry, https://www.cloudfoundry.org/
   * __Cloud Foundry command line interface (CLI):__ https://github.com/cloudfoundry/cli
   * __CF python template app:__ https://github.com/IBM-Bluemix/get-started-python
+  * __CF Buildpack:__ https://github.com/heroku/heroku-buildpack-python.git
 
 ### examples:
 
@@ -114,7 +115,7 @@ in IBM Bluemix CF
   as a base layout which contains the same head, header, sidebar, and footer.
   The main content in the article section changes per GET and POST call.
 
-### `./uploads/`
+### `./static/uploads/`
 
   directory to store uploads from user input
 

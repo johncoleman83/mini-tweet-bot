@@ -29,7 +29,7 @@ api = tweepy.API(auth)
 # flask integrations
 app = Flask(__name__)
 port = int(os.getenv('PORT', 8080))
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = './static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg', 'gif'])
 
