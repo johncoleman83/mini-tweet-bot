@@ -5,14 +5,12 @@ takes user input and tweets to designated account
 import tweepy
 import multiprocessing
 import os
-import cv2
 import time
 from flask import Flask, render_template, request, jsonify
 from werkzeug import secure_filename
 from time import sleep
 from credentials import (consumer_key, consumer_secret, access_token,
                          access_token_secret)
-from camera import take_picture
 # custom imports
 import censorship
 from aldict import ascii_dict, leet_dict
@@ -36,12 +34,14 @@ ALLOWED_EXTENSIONS = set(['txt', 'png', 'jpg', 'jpeg', 'gif'])
 
 # flask support function to verify file import type
 def allowed_file(filename):
+    """checks if file is allowable and safe guards the file"""
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 # adds date to input image file
 def add_date(filename):
+    """makes each file unique by adding date"""
     extension = filename[-4:]
     prefix = filename[:-4]
     thedate = time.strftime("%d-%m-%y--%H:%M:%S")
@@ -50,6 +50,7 @@ def add_date(filename):
 
 # translation to ascii or leet
 def translate(tweetvar, c):
+    """function translates input tweet to leet or ascii art"""
     if c == 'a':
         tweetvar = tweetvar.lower()
         for key in ascii_dict:
@@ -63,8 +64,6 @@ def translate(tweetvar, c):
 
 
 # begin tweet functions here
-
-
 def tweet_text(tweetvar):
     """ tweets text from input variable """
     try:
@@ -158,10 +157,9 @@ def follow_followers():
                 pass
 
 # begin flask template rendering
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """renders main index page"""
     if request.method == 'GET':
         return render_template('index.html', newstring="none")
     if request.method == 'POST':
@@ -185,12 +183,6 @@ def index():
                     if tweet_image(filename, tweetvar):
                         return render_template('confirmtweet.html',
                                                tweetvar=tweetvar)
-            elif request.form['action'] == 'selfie from webcam':
-                filename = take_picture()
-                filename = add_date(filename)
-                if tweet_image(filename, tweetvar):
-                    return render_template('confirmtweet.html',
-                                           tweetvar=tweetvar)
             elif tweet_text(tweetvar):
                 return render_template('confirmtweet.html', tweetvar=tweetvar)
         return render_template('confirmtweet.html', tweetvar='failure')
@@ -198,6 +190,7 @@ def index():
 
 @app.route('/confirmtweet')
 def confirmtweet():
+    """renders confirmation tweet"""
     return render_template('confirmtweet.html', tweetvar='failure')
 
 
