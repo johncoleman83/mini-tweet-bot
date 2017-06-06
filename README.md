@@ -153,7 +153,7 @@ in IBM Bluemix CF
    	 Cloud Foundry for IBM Bluemix, but other cloud services will work as well.
 
 ### demo screen shot
-<img src="https://github.com/johncoleman83/mini-tweet-bot/blob/master/static/images/demo-screen-shot.png" width="auto" height="400" />
+<img src="https://github.com/johncoleman83/mini-tweet-bot/blob/master/static/images/screen-shot.png" width="auto" height="400" />
 
 __NOTE:__ The mini tweet bot functions most successfully when hosted on a
 cloud.  However, if you would like to run the app on your own machine, you can
