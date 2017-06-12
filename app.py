@@ -6,7 +6,7 @@ import tweepy
 import multiprocessing
 import os
 import time
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 from werkzeug import secure_filename
 from time import sleep
 from credentials import (consumer_key, consumer_secret, access_token,
@@ -165,7 +165,7 @@ def index():
     if request.method == 'POST':
         tweetvar = request.form['tweet']
         if not censor(tweetvar):
-            return render_template('confirmtweet.html', tweetvar="profanity")
+            return redirect(url_for('confirmtweet', tweetvar="profanity"))
         if request.form['translate'] == "ascii":
             tweetvar = translate(tweetvar, 'a')
         elif request.form['translate'] == "leet":
@@ -181,17 +181,17 @@ def index():
                     filename = add_date(filename)
                     file.save(filename)
                     if tweet_image(filename, tweetvar):
-                        return render_template('confirmtweet.html',
-                                               tweetvar=tweetvar)
+                        return redirect(url_for('confirmtweet',
+                                                tweetvar=tweetvar))
             elif tweet_text(tweetvar):
-                return render_template('confirmtweet.html', tweetvar=tweetvar)
-        return render_template('confirmtweet.html', tweetvar='failure')
+                return redirect(url_for('confirmtweet', tweetvar=tweetvar))
+        return redirect(url_for('confirmtweet', tweetvar='failure'))
 
 
-@app.route('/confirmtweet')
-def confirmtweet():
+@app.route('/confirmtweet/<tweetvar>', methods=['GET'])
+def confirmtweet(tweetvar):
     """renders confirmation tweet"""
-    return render_template('confirmtweet.html', tweetvar='failure')
+    return render_template('confirmtweet.html', tweetvar=tweetvar)
 
 
 @app.route('/features', methods=['GET', 'POST'])
@@ -209,7 +209,7 @@ def features():
         xfollowers = int(request.form['xfollowers']
                          if request.form['xfollowers'] else 3)
         if not censor(searchterms):
-            return render_template('confirmtweet.html', tweetvar='profanity')
+            return redirect(url_for('confirmtweet', tweetvar='profanity'))
         try:
             if request.form['retweet']:
                 if retweet_follow(searchterms) is not True:
@@ -251,19 +251,18 @@ def features():
         except:
             failcount += 1
         if failcount >= 5:
-            return render_template('confirmfeature.html', status='failure')
+            return redirect(url_for('confirmfeature', status='failure'))
         else:
-            return render_template('confirmfeature.html', status='success')
+            return redirect(url_for('confirmfeature', status='success'))
+
+@app.route('/confirmfeature/<status>', methods=['GET'])
+def confirmfeature(status):
+    return render_template('confirmfeature.html', status=status)
 
 
-@app.route('/confirmfeature')
-def confirmfeature():
-    return render_template('confirmfeature.html', status='failure')
-
-
-@app.route('/are-no-one')
+@app.route('/are-no-one', methods=['GET'])
 def easteregg():
-    return render_template('easteregg.html', status='failure')
+    return render_template('easteregg.html')
 
 
 @app.errorhandler(404)

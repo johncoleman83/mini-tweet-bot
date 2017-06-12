@@ -7,7 +7,7 @@
 			success! <i class="fa fa-smile-o" aria-hidden="true"></i>
 		  </p>
 		  <p>initiated features<br>
-		  <img class="gif" src="/static/images/success.gif"></p>
+		  <img class="gif" src="{{ url_for('static', filename='images/success.gif') }}"></p>
 	{% else %}
 		<article class="failure">
 		  <p>
@@ -24,7 +24,7 @@
 			is this a repeated tweet?<br>
 			did you reach your max tweets?<br>
 			is your status update more than 140 characters?<br>
-			<img class="gif" src="/static/images/mistake.gif">
+			<img class="gif" src="{{ url_for('static', filename='images/mistake.png') }}">
 		  </p>
 	{% endif %}
 </article>

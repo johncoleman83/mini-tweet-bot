@@ -1,4 +1,4 @@
-/*! styles.css v2.0.8 */
+/*! styles.css v2.1.0 *//
 @charset "UTF-8";
 
 /* ================
@@ -168,7 +168,7 @@ header ul a {
    ================ */
 
 .gif {
-	box-shadow: 0 0 3px 3px #353535;
+	box-shadow: 0 0 26px 7px #424242;
 	border: 1px solid #fff;
 	margin-top: 20px;
 }
