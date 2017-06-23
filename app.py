@@ -184,7 +184,7 @@ def index():
                         return redirect(url_for('confirmtweet',
                                                 tweetvar=tweetvar))
             elif tweet_text(tweetvar):
-                return redirect(url_for('confirmtweet', tweetvar=tweetvar))
+                return redirect(url_for('confirmtweet', tweetvar='party time'))
         return redirect(url_for('confirmtweet', tweetvar='failure'))
 
 
