@@ -126,4 +126,4 @@ David John Coleman II.	Check out my website [davidjohncoleman.com](http://www.da
 
 ### License
 
-Public Domain, no copyright protection
+MIT License
