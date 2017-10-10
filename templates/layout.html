@@ -1,152 +1,154 @@
 <!doctype html>
 <html lang="en">
-	<head>
-	<title>mini tweet bot</title>
+  <head>
+    <title>mini tweet bot</title>
 
-	<!-- meta data -->
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="icon" hrer="{{ url_for('static', filename='images/anonymousface.png') }}">
+    <!-- meta data -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon"
+	  type="image/png"
+	  href="{{ url_for('static', filename='images/anonymousface.png') }}">
 
-	<!-- facebook -->
-	<meta property="og:image" content="static/images/crossing-street-1665x1342.jpg">
-	<meta property="og:url" content="mtb.mybluemix.net">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="mini tweet bot">
-	<meta property="og:description"
-		  content="mini tweet bot: twitter automation for shared, public or private twitter accounts">
+    <!-- facebook -->
+    <meta property="og:image" content="static/images/crossing-street-1665x1342.jpg">
+    <meta property="og:url" content="mtb.mybluemix.net">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="mini tweet bot">
+    <meta property="og:description"
+	  content="mini tweet bot: twitter automation for shared, public or private twitter accounts">
 
-	<!-- twitter card -->
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@are_no_one">
-	<meta name="twitter:creator" content="@djohncoleman">
-	<meta name="twitter:title" content="mini tweet bot">
-	<meta name="twitter:description" content="mini tweet bot: twitter automation for shared, public or private twitter accounts">
-	<meta name="twitter:image" content="static/images/crossing-street-1665x1342.jpg">
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@are_no_one">
+    <meta name="twitter:creator" content="@djohncoleman">
+    <meta name="twitter:title" content="mini tweet bot">
+    <meta name="twitter:description" content="mini tweet bot: twitter automation for shared, public or private twitter accounts">
+    <meta name="twitter:image" content="static/images/crossing-street-1665x1342.jpg">
 
-	<!-- css -->
-	<link rel="stylesheet"
-		  href="{{ url_for('static', filename='css/styles.css') }}">
-	<link rel="stylesheet"
-		  href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!-- css -->
+    <link rel="stylesheet"
+	  href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet"
+	  href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
-	<!-- js -->
-	<script src="static/js/behavior.js"></script>
+    <!-- js -->
+    <script src="static/js/behavior.js"></script>
 
-	</head>
-	<body>
-	<header>
-		<a id="hamburger" href="#">
-		  <i class="fa fa-bars" aria-hidden="true"></i>
-		</a>
-		<img id="menu-logo" src="{{ url_for('static', filename='images/anonymousface.png') }}">
-		<nav id="navigation" class="hidden">
-		<ul>
-		<a href="/"><li>
-			<i class="fa fa-home" aria-hidden="true"></i>
-			mini tweet bot
-		</li></a>
-		<a href="/features"><li>
-			<i class="fa fa-wrench" aria-hidden="true"></i>
-			features
-			</li></a>
-			<a href="https://twitter.com/are_no_one" target="_blank"><li>
-			@are_no_one
-			</li></a>
-			<a href="https://github.com/johncoleman83/mini-tweet-bot" target="_blank"><li>
-				<i class="fa fa-code" aria-hidden="true"></i>
-			source code
-			</li></a>
-			<a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/" target="_blank"><li>
-				<i class="fa fa-question" aria-hidden="true"></i>
-			about bot
-			</li></a>
-		</ul>
-		</nav>
-	</header>
-	<main>
-	  <div id="features-outer">
-		<a id="features" href="#">
-		  <i class="fa fa-info-circle" aria-hidden="true"></i>
-		</a>
-		<div id="features-box" class="empty">
-		  <h3>mini tweet bot app features</h3>
-		  <strong>home page</strong>
-		  <ul>
-			<li><strong>translate</strong>: choose between ascii art or L337, to
-			  receive a string of your translated text. Clicking the 'translate'
-			  button does not tweet, and instead returns your translation.
-			  clicking 'tweet' button will tweet your translation.
-			</li>
-			<li><strong>shared twitter</strong> account for:
-			  <br>(1) a club, organization, or company
-			  <br>(2) photo spot at tourist destination or event
-			  <br>(3) public access for anyone --and their friends!
-			</li>
-			<li><strong>tweet image</strong>: upload a file to tweet along with
-			  a status update (image file extensions only).
-			</li>
-		  </ul>
-		  <strong>features page</strong>
-		  <ul>
-			<li><strong>retweet & follow: </strong>
-			  (1) bot searches linked account with <strong>search terms</strong>
-			  from user input; (2) attempts a retweet; (3) attempts to follow
-			  the user of the retweeted tweet; (4) This process is repeated
-			  until a tweet is successfully tweeted, or the list of tweets if
-			  fully parsed;
-			</li>
-			<li><strong>follow followers: </strong>
-			  (1) bot follows all your followers that are not yet being
-			  followed;
-			</li>
-			<li><strong>follow X more: </strong>
-			  (1) bot searches linked account with <strong>search terms</strong>
-			  from user input; (2) attempts to follow X new followers from the
-			  users in the search results; (3) if there are no results, or all
-			  the users are already being followed, then no user is followed.
-			</li>
-			<li><strong>auto retweet: </strong>
-			  (1) bot searches linked account with <strong>search terms</strong>
-			  from user input; (2) attempts to retweet a tweet; (3) repeats this
-			  process every N seconds; (4) repeats for Y iterations
-			</li>
-			<li><strong>auto tweet file: </strong>
-			  (1) bot tweets a line form the input text file; (2) automation
-			  continues every N seconds until EOF (3) file must have .txt
-			  extension (4) bot will only tweet 140 chars from each line.
-			  <br>(5) <a href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/support/daffodils.txt"
-						 target="_blank">click here for example file</a>
-			<li><a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/"
-				   target="_blank">mini tweet bot blog:</a> read more details
-			  about how mini tweet bot works and troubleshooting issues at the
-			  blog.
-			</li>
-			<li><a href="/features">click here to use the features</a>
-			</li>
-		  </ul>
-		</div>
-	  </div>
+  </head>
+  <body>
+    <header>
+      <a id="hamburger" href="#">
+	<i class="fa fa-bars" aria-hidden="true"></i>
+      </a>
+      <img id="menu-logo" src="{{ url_for('static', filename='images/anonymousface.png') }}">
+      <nav id="navigation" class="hidden">
+	<ul>
+	  <a href="/"><li>
+	      <i class="fa fa-home" aria-hidden="true"></i>
+	      mini tweet bot
+	  </li></a>
+	  <a href="/features"><li>
+	      <i class="fa fa-wrench" aria-hidden="true"></i>
+	      features
+	  </li></a>
+	  <a href="https://twitter.com/are_no_one" target="_blank"><li>
+	      @are_no_one
+	  </li></a>
+	  <a href="https://github.com/johncoleman83/mini-tweet-bot" target="_blank"><li>
+	      <i class="fa fa-code" aria-hidden="true"></i>
+	      source code
+	  </li></a>
+	  <a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/" target="_blank"><li>
+	      <i class="fa fa-question" aria-hidden="true"></i>
+	      about bot
+	  </li></a>
+	</ul>
+      </nav>
+    </header>
+    <main>
+      <div id="features-outer">
+	<a id="features" href="#">
+	  <i class="fa fa-info-circle" aria-hidden="true"></i>
+	</a>
+	<div id="features-box" class="empty">
+	  <h3>mini tweet bot app features</h3>
+	  <strong>home page</strong>
+	  <ul>
+	    <li><strong>translate</strong>: choose between ascii art or L337, to
+	      receive a string of your translated text. Clicking the 'translate'
+	      button does not tweet, and instead returns your translation.
+	      clicking 'tweet' button will tweet your translation.
+	    </li>
+	    <li><strong>shared twitter</strong> account for:
+	      <br>(1) a club, organization, or company
+	      <br>(2) photo spot at tourist destination or event
+	      <br>(3) public access for anyone --and their friends!
+	    </li>
+	    <li><strong>tweet image</strong>: upload a file to tweet along with
+	      a status update (image file extensions only).
+	    </li>
+	  </ul>
+	  <strong>features page</strong>
+	  <ul>
+	    <li><strong>retweet & follow: </strong>
+	      (1) bot searches linked account with <strong>search terms</strong>
+	      from user input; (2) attempts a retweet; (3) attempts to follow
+	      the user of the retweeted tweet; (4) This process is repeated
+	      until a tweet is successfully tweeted, or the list of tweets if
+	      fully parsed;
+	    </li>
+	    <li><strong>follow followers: </strong>
+	      (1) bot follows all your followers that are not yet being
+	      followed;
+	    </li>
+	    <li><strong>follow X more: </strong>
+	      (1) bot searches linked account with <strong>search terms</strong>
+	      from user input; (2) attempts to follow X new followers from the
+	      users in the search results; (3) if there are no results, or all
+	      the users are already being followed, then no user is followed.
+	    </li>
+	    <li><strong>auto retweet: </strong>
+	      (1) bot searches linked account with <strong>search terms</strong>
+	      from user input; (2) attempts to retweet a tweet; (3) repeats this
+	      process every N seconds; (4) repeats for Y iterations
+	    </li>
+	    <li><strong>auto tweet file: </strong>
+	      (1) bot tweets a line form the input text file; (2) automation
+	      continues every N seconds until EOF (3) file must have .txt
+	      extension (4) bot will only tweet 140 chars from each line.
+	      <br>(5) <a href="https://github.com/johncoleman83/mini-tweet-bot/blob/master/support/daffodils.txt"
+			 target="_blank">click here for example file</a>
+	    <li><a href="http://www.davidjohncoleman.com/2017/mini-tweet-bot/"
+		   target="_blank">mini tweet bot blog:</a> read more details
+	      about how mini tweet bot works and troubleshooting issues at the
+	      blog.
+	    </li>
+	    <li><a href="/features">click here to use the features</a>
+	    </li>
+	  </ul>
+	</div>
+      </div>
       {% block content %}
       {% endblock %}
-	  <aside>
-		  <a class="twitter-timeline" data-link-color="#2B7BB9"
-			 href="https://twitter.com/are_no_one">Tweets by are_no_one</a>
-		  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-	  </aside>
-	</main>
-	<footer>
-		<p>by:
+      <aside>
+	<a class="twitter-timeline" data-link-color="#2B7BB9"
+	   href="https://twitter.com/are_no_one">Tweets by are_no_one</a>
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </aside>
+    </main>
+    <footer>
+      <p>by:
 	<a href="http://www.davidjohncoleman.com/" target="_blank">David John Coleman II</a>
 	<a href="https://twitter.com/djohncoleman" target="_blank">
-		<i class="fa fa-twitter" aria-hidden="true"></i></a>
+	  <i class="fa fa-twitter" aria-hidden="true"></i></a>
 	<a href="https://www.facebook.com/johncoleman83" target="_blank">
-		<i class="fa fa-facebook" aria-hidden="true"></i></a>
+	  <i class="fa fa-facebook" aria-hidden="true"></i></a>
 	<a href="https://github.com/johncoleman83/" target="_blank">
-		<i class="fa fa-github" aria-hidden="true"></i></a>
+	  <i class="fa fa-github" aria-hidden="true"></i></a>
 	<a href="https://www.linkedin.com/in/davidjohncoleman/" target="_blank">
-		<i class="fa fa-linkedin" aria-hidden="true"></i></a>
-		</p>
-	</footer>
-	</body>
+	  <i class="fa fa-linkedin" aria-hidden="true"></i></a>
+      </p>
+    </footer>
+  </body>
 </html>
