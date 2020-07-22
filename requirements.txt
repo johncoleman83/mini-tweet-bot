@@ -3,4 +3,4 @@ oauthlib==2.0.1
 tweepy==3.5.0
 Flask==0.11.1
 numpy==1.12.1
-Werkzeug==0.12.1
+Werkzeug==0.15.3
