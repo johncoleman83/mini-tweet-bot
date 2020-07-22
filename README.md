@@ -24,8 +24,8 @@
 
   * __working app:__ https://mtb.mybluemix.net/
   * __blog:__ http://www.davidjohncoleman.com/2017/mini-tweet-bot/
-  * __demo example:__ http://holberton-mtb.mybluemix.net/
-    * __demo sourcecode__: https://github.com/johncoleman83/holberton-mtb
+  * __demo example:__ http://bootcamp-mtb.mybluemix.net/
+    * __demo sourcecode__: https://github.com/johncoleman83/bootcamp-mtb
 
 ### twitter:
 
